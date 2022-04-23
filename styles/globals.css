@@ -41,12 +41,19 @@
   .logo--thin {
     @apply font-normal;
   }
-  .header-nav {
-    @apply hidden ml-auto md:block;
+  /* .header-nav {
+    @apply ;
+  } */
+  .open {
+    @apply top-0 left-0 h-full w-full bg-[#ececec] justify-center items-center  
+  }
+  .nav-list--open {
+    @apply flex flex-col items-center justify-center h-full text-center 
   }
   .header-nav__list {
-    @apply flex flex-wrap items-center space-x-4 font-semibold md:ml-auto;
+    @apply flex flex-wrap items-center font-semibold md:space-x-4 md:ml-auto;
   }
+
   .up-arrow {
     @apply fixed right-2 w-[30px] bottom-2;
   }
