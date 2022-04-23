@@ -1,25 +1,24 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { SiteContext } from "../../hooks/useSiteContext";
 
 const NavbarMenu = ({ open, setOpen }) => {
   const [mobileScreen, setMobileScreen] = useState();
+  const [data, setData] = useContext(SiteContext);
   useEffect(() => {
     const screen = window.innerWidth < 768;
     setMobileScreen(screen);
   }, []);
-
-  // `${open && mobileScreen ? "absolute" : "hidden"}  header-nav`}
-  // .nav-list--open
+  // For menus
+  const { menus } = data;
+  console.log(menus);
   return (
-    <nav className={`${open && mobileScreen ? "absolute open" : "hidden"} ml-auto md:block transition-all`}>
+    <nav className={`${open && mobileScreen ? "open" : "hidden"} md:ml-auto md:block transition-all`}>
       <ul className={`${open && mobileScreen ? "nav-list--open" : ""} header-nav__list`}>
+        {/* Iterate menus */}
         <li>
-          <a href="#experience">Experiencia</a>
-        </li>
-        <li>
-          <a href="#work">Proyectos</a>
-        </li>
-        <li>
-          <a href="#about-me">Sobre Mi</a>
+          <a className="nav-list__link" href="#experience">
+            Experiencia
+          </a>
         </li>
         <li>
           <a href="#form" className="btn">

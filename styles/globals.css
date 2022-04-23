@@ -18,7 +18,7 @@
 
 @layer components {
   .header {
-    @apply flex py-5 text-sm md:text-base;
+    @apply container flex py-5 text-sm md:text-base ;
   }
   .btn {
     @apply w-fit py-1 px-4 rounded-full border border-neutral-900 hover:bg-black hover:text-[#ececec];
@@ -26,9 +26,9 @@
   .section {
     @apply my-8 md:my-20;
   }
-  .main-part {
+  /* .main-part {
     @apply max-w-[90%] md:max-w-screen-md mx-auto;
-  }
+  } */
   img {
     @apply w-full;
   }
@@ -36,7 +36,7 @@
     @apply w-[25px] transition-transform ease-linear duration-[0.2s] hover:scale-110;
   }
   .logo {
-    @apply font-bold;
+    @apply z-50 font-bold;
   }
   .logo--thin {
     @apply font-normal;
@@ -45,13 +45,17 @@
     @apply ;
   } */
   .open {
-    @apply top-0 left-0 h-full w-full bg-[#ececec] justify-center items-center  
+    @apply top-0 left-0 h-screen w-screen bg-[#ececec] justify-center items-center fixed z-30
   }
   .nav-list--open {
-    @apply flex flex-col items-center justify-center h-full text-center 
+    @apply flex flex-col items-center justify-center h-screen text-center w-screen bg-[#ececec]
   }
   .header-nav__list {
-    @apply flex flex-wrap items-center font-semibold md:space-x-4 md:ml-auto;
+    @apply flex flex-wrap items-center space-y-5 font-semibold md:space-x-4 md:space-y-0 md:ml-auto;
+  }
+
+  .nav-list__link {
+    @apply text-2xl md:text-base
   }
 
   .up-arrow {
@@ -168,9 +172,24 @@
 }
 
 /* Additional Styles */
+body {
+  overflow-x: hidden;
+  position: relative;
+}
+
 
 * {
     scroll-behavior: smooth;
+    box-sizing: border-box;
+}
+
+.header {
+  /* overflow: hidden; */
+  position: fixed;
+  top: 0;
+  left: 50%;
+transform: translateX(-50%);
+  width: min(90%, 1200px);
 }
 
 .heart {
@@ -187,3 +206,12 @@
     transform: scale(1);
   }
 }
+
+.open {
+  width: 100vw!important;
+  height: 100vh;
+  position: fixed;
+  left: 0!important;
+  transform: translateX(-4%);
+}
+
