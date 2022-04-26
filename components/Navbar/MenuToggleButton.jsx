@@ -1,9 +1,35 @@
-import { HiOutlineMenu } from "react-icons/hi";
+import Lottie from "lottie-react";
+import { useEffect, useRef } from "react";
+import Hamburger from "../../src/lotties/menu-portfolio.json";
+
+const style = {
+  width: 25,
+};
+
 const MenuToggleButton = ({ setOpen, open }) => {
+  const lottieRef = useRef();
   const handleButtonClick = () => {
     setOpen(!open);
   };
-  return <HiOutlineMenu onClick={handleButtonClick} className="z-50 block md:hidden" />;
+
+  useEffect(() => {
+    if (open) {
+      lottieRef.current.playSegments([0, 40], true);
+    } else {
+      lottieRef.current.playSegments([10, 0], true);
+    }
+  }, [open]);
+
+  return (
+    <Lottie
+      onClick={handleButtonClick}
+      className="z-50 block md:hidden"
+      animationData={Hamburger}
+      lottieRef={lottieRef}
+      style={style}
+      autoplay={false}
+    />
+  );
 };
 
 export default MenuToggleButton;
