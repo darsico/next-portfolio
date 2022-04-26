@@ -19,6 +19,7 @@ import styles from "../styles/Home.module.css";
 // }
 export default function Home() {
   const [data, setData] = useContext(SiteContext);
+  console.log(data);
   const { title, description } = data.generalSettings;
 
   return (
@@ -57,3 +58,5 @@ export default function Home() {
     </Layout>
   );
 }
+
+
