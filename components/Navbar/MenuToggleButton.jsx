@@ -4,7 +4,7 @@ import Hamburger from "../../src/lotties/menu-portfolio.json";
 
 const style = {
   width: 25,
-  cursor: "pointer",
+
 };
 
 const MenuToggleButton = ({ setOpen, open }) => {
@@ -24,7 +24,7 @@ const MenuToggleButton = ({ setOpen, open }) => {
   return (
     <Lottie
       onClick={handleButtonClick}
-      className="z-50 block md:hidden"
+      className="z-50 block cursor-pointer md:hidden"
       animationData={Hamburger}
       lottieRef={lottieRef}
       style={style}

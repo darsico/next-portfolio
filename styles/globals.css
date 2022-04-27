@@ -20,9 +20,9 @@
   .header {
     @apply container flex py-5 text-sm md:text-base ;
   }
-  .btn {
+  /* .btn {
     @apply w-fit py-1 px-4 rounded-full border border-neutral-900 hover:bg-black hover:text-[#ececec];
-  }
+  } */
   .section {
     @apply my-8 md:my-20;
   }
@@ -35,36 +35,36 @@
   .icon {
     @apply w-[25px] transition-transform ease-linear duration-[0.2s] hover:scale-110;
   }
-  .logo {
+  /* .logo {
     @apply z-50 font-bold;
   }
   .logo--thin {
     @apply font-normal;
-  }
+  } */
   /* .header-nav {
     @apply ;
   } */
-  .open {
+  /* .open {
     @apply top-0 left-0 h-screen w-screen bg-[#ececec] justify-center items-center fixed z-30
-  }
-  .nav-list--open {
+  } */
+  /* .nav-list--open {
     @apply flex flex-col items-center justify-center h-screen text-center w-screen bg-[#ececec]
-  }
-  .header-nav__list {
+  } */
+  /* .header-nav__list {
     @apply flex flex-wrap items-center space-y-5 font-semibold md:space-x-4 md:space-y-0 md:ml-auto;
-  }
+  } */
 
-  .nav-list__link {
+  /* .nav-list__link {
     @apply text-2xl md:text-base
-  }
+  } */
 
   .up-arrow {
     @apply fixed right-2 w-[30px] bottom-2;
   }
-  .hero {
+  /* .hero {
     @apply h-[50vh] md:h-[70vh] flex flex-col relative;
-  }
-  .hero__text--cta {
+  } */
+  /* .hero__text--cta {
     @apply text-3xl mt-3 sm:text-4xl md:text-6xl font-semibold leading-7 md:leading-[0.9] md:w-10/12 w-3/4 -tracking-wider;
   }
   .hero__text {
@@ -75,8 +75,8 @@
   }
   .hero__link-arrow {
     @apply text-[10px];
-  }
-  .work {
+  } */
+  /* .work {
     @apply w-full;
   }
   .work__img {
@@ -103,7 +103,7 @@
 
   .work__second-img {
     @apply hidden -mt-40 md:inline w-36 justify-self-center;
-  }
+  } */
 
   .contact {
     @apply grid grid-cols-1 md:grid-cols-2;
@@ -111,15 +111,16 @@
   .contact__img {
     @apply flex flex-col items-center justify-center p-5;
   }
-  .connect {
+  /* .connect {
     @apply flex flex-col items-center justify-center space-y-4 h-fit;
   }
   .connect__text {
     @apply text-3xl font-bold md:text-5xl -tracking-wider;
   }
   .connect__text--thin {
+
     @apply text-3xl font-light md:text-5xl -tracking-wider;
-  }
+  } */
   .connect__arrow {
     @apply w-5 md:w-8;
   }
@@ -164,7 +165,7 @@
     @apply flex items-center justify-center text-xs font-thin text-white;
   }
   .signature__icon {
-    @apply px-1 w-[30px];
+    @apply px-1 w-[30px] text-rose-600;
   }
   .signature__name {
     @apply ml-1 font-medium;
@@ -207,11 +208,11 @@ transform: translateX(-50%);
   }
 }
 
-.open {
+/* .open {
   width: 100vw!important;
   height: 100vh;
   position: fixed;
   left: 0!important;
   transform: translateX(-4%);
-}
+} */
 
