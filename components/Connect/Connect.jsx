@@ -1,19 +1,32 @@
+import Lottie from "lottie-react";
 import tw from "twin.macro";
 import Section from "../Section";
+import arrowDown from "../../src/lotties/icon-arrow-down.json";
+import { useEffect, useRef } from "react";
+
+const arrowDownStyle = {
+  width: 100,
+};
 
 const Connect = () => {
+  const lottieRef = useRef();
+
+  useEffect(() => {
+    lottieRef.current.setSpeed(0.6);
+  }, []);
+
   return (
     <ConnectSection>
       <ConnectText>Conectemos!</ConnectText>
       <ConnectTextThin>Me gustaría escuchar de ti</ConnectTextThin>
       {/* Lottie down */}
-      {/* <img src="./images/down_arrow.svg" class="connect__arrow" alt="Flecha hacia abajo" /> */}
+      <Lottie animationData={arrowDown} autoplay={true} loop={true} style={arrowDownStyle} lottieRef={lottieRef} />
     </ConnectSection>
   );
 };
 
 const ConnectSection = tw(Section)`
-flex flex-col items-center justify-center space-y-4 h-[fit-content]
+flex flex-col items-center justify-center  h-[fit-content] py-20
 `;
 
 const ConnectText = tw.h2`

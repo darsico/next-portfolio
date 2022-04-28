@@ -1,4 +1,4 @@
-import { Lottie } from "lottie-react";
+import Lottie from "lottie-react";
 import Section from "../Section";
 import animConnect from "../../src/lotties/connect-lottie.json";
 // import { useRef } from "react";
@@ -7,7 +7,9 @@ const Contact = () => {
   // const lottieRef = useRef();
   return (
     <Section className="section contact">
-      <figure className="contact__img">{/* <Lottie animationData={animConnect} autoplay={true} /> */}</figure>
+      <figure className="contact__img">
+        <Lottie animationData={animConnect} autoplay={true} loop={true} />
+      </figure>
       <form action="/" className="form" id="form">
         <h3 className="form__title">Póngase en contacto para nuevas oportunidades o solo para saludar :)</h3>
         <div className="form__input-list">

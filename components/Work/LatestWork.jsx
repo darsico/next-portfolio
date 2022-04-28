@@ -13,13 +13,14 @@ import {
 
 const LatestWork = () => {
   return (
-    <Section id="work">
-      <figure>
+    <WorkSection id="work">
+      <WorkSectionTitle>Mi último trabajo</WorkSectionTitle>
+      <WorkImageContainer>
         <WorkImage
           src="https://raw.githubusercontent.com/darsico/portafolio-dh/3034cfd5814a082e1066c6dfcfe949d962cfcec2/images/fondo-card.jpg"
           alt=""
         />
-      </figure>
+      </WorkImageContainer>
       <WorkArticle>
         <WorkContent>
           <WorkSubtitle>Pagina Web</WorkSubtitle>
@@ -38,8 +39,18 @@ const LatestWork = () => {
           alt=""
         />
       </WorkArticle>
-    </Section>
+    </WorkSection>
   );
 };
+
+const WorkSectionTitle = tw.h3`text-xl font-bold mb-5 md:text-3xl `;
+
+const WorkSection = tw(Section)`
+ flex flex-col items-center pt-20 md:pt-14
+`;
+
+const WorkImageContainer = tw.figure`
+w-full
+`;
 
 export default LatestWork;
