@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { SiteContext } from "../../hooks/useSiteContext";
+import { SiteContext } from "../../context/SiteContext";
 
 import tw, { styled } from "twin.macro";
 import StandardButton from "../Buttons/StandarButton";

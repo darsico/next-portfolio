@@ -1,9 +1,7 @@
-import Layout from "../../components/Layout.jsx";
-import Block from "../../components/Project/Block.jsx";
-import ProjectInfo from "../../components/Project/ProjectInfo.jsx";
-
-import requestData from "../../lib/request.js";
-import { QUERY_PROJECTS } from "../../src/queries/queryProjects.js";
+import ProjectInfo from "../components/Project/ProjectInfo.jsx";
+import Layout from "../components/Layout.jsx";
+import requestData from "../lib/request";
+import { QUERY_PROJECTS } from "../src/queries/queryProjects.js";
 
 export const getStaticPaths = async () => {
   const { projects } = await requestData(QUERY_PROJECTS);
@@ -32,20 +30,13 @@ export const getStaticProps = async (context) => {
   };
 };
 
-const ProjectPage = ({ project }) => {
-  const blocks = project.node.blocks;
+const ProjectIndividual = ({ project }) => {
+  console.log(project);
   return (
     <Layout>
-      <ProjectInfo project={project} />
-      <section className="mx-auto w-[80%] sm:w-[50%] md:-mt-5">
-        {blocks
-          ? blocks.map((block, index) => {
-              return <Block block={block} key={index} />;
-            })
-          : "Can't find the blocks"}
-      </section>
+      <ProjectInfo />
     </Layout>
   );
 };
 
-export default ProjectPage;
+export default ProjectIndividual;

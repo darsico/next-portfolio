@@ -8,11 +8,11 @@ import Works from "../components/Work/Works";
 import Connect from "../components/Connect/Connect.jsx";
 
 import { QUERY_SITE_DATA } from "../data/site";
-import { SiteContext } from "../hooks/useSiteContext";
+import { SiteContext } from "../context/SiteContext";
 import requestData from "../lib/request";
 import Contact from "../components/Contact/Contact";
 
-// export async function getStaticProps() {
+// export const getStaticProps = async() => {
 //   const { generalSettings } = await requestData(QUERY_SITE_DATA);
 
 //   return {

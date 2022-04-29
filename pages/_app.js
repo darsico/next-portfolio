@@ -1,5 +1,5 @@
 import "../styles/globals.css";
-import { SiteContext } from "../hooks/useSiteContext";
+import { SiteContext } from "../context/SiteContext";
 import { useState } from "react";
 import requestData from "../lib/request";
 import { QUERY_SITE_DATA } from "../data/site";
