@@ -4,7 +4,6 @@ import Hamburger from "../../src/lotties/menu-portfolio.json";
 
 const style = {
   width: 25,
-
 };
 
 const MenuToggleButton = ({ setOpen, open }) => {

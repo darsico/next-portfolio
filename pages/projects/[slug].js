@@ -37,7 +37,7 @@ const ProjectPage = ({ project }) => {
   return (
     <Layout>
       <ProjectInfo project={project} />
-      <section className="mx-auto w-[80%] sm:w-[50%] md:-mt-5">
+      <section className="mx-auto w-[80%] sm:w-[70%] md:max-w-2xl md:-mt-5 flex flex-col gap-2 py-20 ">
         {blocks
           ? blocks.map((block, index) => {
               return <Block block={block} key={index} />;

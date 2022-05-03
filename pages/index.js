@@ -1,4 +1,3 @@
-import Head from "next/head";
 import Image from "next/image";
 import { useContext } from "react";
 import Hero from "../components/Hero";
@@ -6,35 +5,40 @@ import Layout from "../components/Layout";
 import LatestWork from "../components/Work/LatestWork";
 import Works from "../components/Work/Works";
 import Connect from "../components/Connect/Connect.jsx";
-
-import { QUERY_SITE_DATA } from "../data/site";
-import { SiteContext } from "../context/SiteContext";
-import requestData from "../lib/request";
 import Contact from "../components/Contact/Contact";
 
-// export const getStaticProps = async() => {
-//   const { generalSettings } = await requestData(QUERY_SITE_DATA);
+import { SiteContext } from "../context/SiteContext";
 
-//   return {
-//     props: {
-//       siteData: generalSettings,
-//     },
-//   };
-// }
-export default function Home() {
+import requestData from "../lib/request";
+import { QUERY_PROJECTS } from "../src/queries/queryProjects";
+
+export const getStaticProps = async () => {
+  const { projects } = await requestData(QUERY_PROJECTS);
+  const projectsData = projects.edges;
+
+  return {
+    props: {
+      projects: projectsData,
+    },
+    revalidate: 1,
+  };
+};
+
+export default function Home({ projects }) {
   const [data, setData] = useContext(SiteContext);
-  console.log(data);
-  const { title, description } = data.generalSettings;
 
+  const { title, description } = data.generalSettings;
+  const latestProjectData = projects[0].node;
+
+  const pastProjectData = projects.filter((project, i) => i !== 0);
+  console.log(pastProjectData);
   return (
     <Layout title={title} description={description}>
       <Hero />
-      <LatestWork />
-      <Works />
+      <LatestWork latestProjectData={latestProjectData} />
+      <Works pastProjectData={pastProjectData} />
       <Connect />
       <Contact />
     </Layout>
   );
 }
-
-

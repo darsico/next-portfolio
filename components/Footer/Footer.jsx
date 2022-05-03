@@ -1,10 +1,12 @@
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { FaHeart } from "react-icons/fa";
+import tw from "twin.macro";
+import Section from "../Section";
 
 const Footer = () => {
   return (
     <footer className="footer">
-      <nav className="footer-nav">
+      <FooterSection>
         <ul className="footer-list">
           <li className="footer-list__item">
             <h5 className="footer-list__title">Escríbeme</h5>
@@ -41,7 +43,7 @@ const Footer = () => {
             </ul>
           </li>
         </ul>
-      </nav>
+      </FooterSection>
       <h3 className="signature">
         Hecho con
         <FaHeart className="signature__icon heart" alt="" />
@@ -51,5 +53,9 @@ const Footer = () => {
     </footer>
   );
 };
+
+const FooterSection = tw(Section)`
+py-0 md:py-0 
+`;
 
 export default Footer;

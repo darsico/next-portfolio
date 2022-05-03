@@ -208,11 +208,8 @@ transform: translateX(-50%);
   }
 }
 
-/* .open {
-  width: 100vw!important;
-  height: 100vh;
-  position: fixed;
-  left: 0!important;
-  transform: translateX(-4%);
-} */
+.list-block li {
+  margin-left: 1rem;
+
+}
 

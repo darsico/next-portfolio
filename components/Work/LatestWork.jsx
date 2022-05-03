@@ -1,3 +1,4 @@
+import Link from "next/link";
 import tw from "twin.macro";
 import Section from "../Section";
 import {
@@ -11,33 +12,34 @@ import {
   WorkTitle,
 } from "./Work.style";
 
-const LatestWork = () => {
+const LatestWork = ({ latestProjectData }) => {
+  const { projectCustomFields, title, categories, uri } = latestProjectData;
+  const { ctaImage, demo, githubRepository, technologies, technologyIcons, description } = projectCustomFields;
+  const LatestWorkImage = ctaImage.sourceUrl;
+  const category = categories.edges[0].node.name;
+
   return (
     <WorkSection id="work">
       <WorkSectionTitle>Mi último trabajo</WorkSectionTitle>
       <WorkImageContainer>
-        <WorkImage
-          src="https://raw.githubusercontent.com/darsico/portafolio-dh/3034cfd5814a082e1066c6dfcfe949d962cfcec2/images/fondo-card.jpg"
-          alt=""
-        />
+        <WorkImage src={LatestWorkImage} alt="" />
       </WorkImageContainer>
       <WorkArticle>
         <WorkContent>
-          <WorkSubtitle>Pagina Web</WorkSubtitle>
+          <WorkSubtitle>{category}</WorkSubtitle>
           <WorkTitle>
-            Tarjeta personal web <span>→</span>
+            {title}
+            <span> →</span>
           </WorkTitle>
-          <WorkDescription>
-            Realizado utilizando conceptos básicos de HTML, CSS, con ayuda del framework Tailwind.
-          </WorkDescription>
-          <WorkCTA href="https://darsico.github.io/tarjeta-personal-web/" target="_blank">
-            Ver proyecto
-          </WorkCTA>
+          <WorkDescription>{description}</WorkDescription>
+          <Link href={uri} passHref>
+            <WorkCTA>Ver proyecto</WorkCTA>
+          </Link>
         </WorkContent>
-        <WorkSecondImage
+        {/* <WorkSecondImage
           src="https://raw.githubusercontent.com/darsico/portafolio-dh/3034cfd5814a082e1066c6dfcfe949d962cfcec2/images/website-card.png"
           alt=""
-        />
+        /> */}
       </WorkArticle>
     </WorkSection>
   );

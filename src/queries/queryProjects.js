@@ -16,8 +16,10 @@ export const QUERY_PROJECTS = gql`
               sourceUrl
             }
             technologies
+            technologyIcons
             githubRepository
             demo
+            description
           }
           slug
           title

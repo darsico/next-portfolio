@@ -20,7 +20,7 @@ const ImageBlock = ({ caption, alt, className, url }) => {
           />
         </figure>
       )}
-      <figcaption className="flex justify-center">
+      <figcaption className="flex justify-center text-sm text-gray-600 mb-2">
         <p>{caption}</p>
       </figcaption>
     </>
