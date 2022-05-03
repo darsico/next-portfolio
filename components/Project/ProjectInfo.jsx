@@ -54,7 +54,7 @@ const ProjectInfo = ({ project }) => {
         <li>
           <h5 className="text-xs uppercase">Demo</h5>
           <a className="text-base font-bold hover:text-gray-600" target="_blank" rel="noreferrer" href={demo}>
-            {demo.replaceAll("https://", "")}
+            {demo.replace("https://", "")}
           </a>
         </li>
       </ul>
