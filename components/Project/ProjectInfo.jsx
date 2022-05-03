@@ -1,30 +1,44 @@
 
-import { BsGithub } from "react-icons/bs";
 import tw from "twin.macro";
+import Image from "next/image";
+import { BsGithub } from "react-icons/bs";
 import { dateFormatter } from "../../src/utils/dateFormatter";
+import { getIconNameAndSource } from "../../src/utils/Works/getIconNameAndSource";
+import { getIconsSource } from "../../src/utils/Works/getIconsSource";
 import Section from "../Section";
 
 const ProjectInfo = ({ project }) => {
   const { title, categories, date, projectCustomFields } = project.node;
-  const { technologies, githubRepository, demo } = projectCustomFields;
+  const { technologies, githubRepository, demo, technologyIcons } = projectCustomFields;
   const category = categories.edges[0].node.name;
+
+  const iconsSource = getIconsSource(technologyIcons);
+  const iconsList = getIconNameAndSource(iconsSource, technologies);
 
   return (
     <InfoSection>
       <InfoTitle>{title}</InfoTitle>
       <div className="flex flex-col justify-between row-start-2 row-end-3 space-y-10 lg:col-start-8 lg:col-end-9 lg:row-start-1">
-        <h4 className="text-sm text-gray-600 md:text-base">{category}</h4>
         <ul>
           <li className="mb-2 text-xs leading-tight uppercase">Tecnologías usadas</li>
-          {technologies.map((tech, index) => {
-            
-            return (
-              <li key={index} className="text-base">
-                {tech}
-              </li>
-            );
-          })}
+          <li>
+            <ul className="flex flex-col gap-2">
+              {iconsList.map((icon, index) => {
+                return (
+                  <li key={index} className="text-base flex gap-1 items-center justify-start">
+                    {icon.source && (
+                      <figure style={{ position: "relative", width: "1.2rem", paddingBottom: "1.2rem" }} key={index}>
+                        <Image alt="" src={icon.source} layout="fill" objectFit="contain" />
+                      </figure>
+                    )}
+                    <p>{icon.name}</p>
+                  </li>
+                );
+              })}
+            </ul>
+          </li>
         </ul>
+        <h4 className="text-sm text-gray-600 md:text-base">{category}</h4>
       </div>
       <ul className="flex flex-col justify-between h-full col-span-2 row-start-2 row-end-3 space-y-5 md:grid-cols-5 lg:col-start-1 lg:col-end-3 lg:row-start-1 ">
         <li>
@@ -39,7 +53,7 @@ const ProjectInfo = ({ project }) => {
         </li>
         <li>
           <h5 className="text-xs uppercase">Demo</h5>
-          <a className="text-base font-bold hover:text-gray-600" href={demo}>
+          <a className="text-base font-bold hover:text-gray-600" target="_blank" rel="noreferrer" href={demo}>
             {demo.replaceAll("https://", "")}
           </a>
         </li>

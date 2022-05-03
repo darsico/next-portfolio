@@ -1,6 +1,8 @@
 import Link from "next/link";
 import tw from "twin.macro";
+import { getIconsSource } from "../../src/utils/Works/getIconsSource";
 import Section from "../Section";
+import TechnologyIcons from "./TechnologyIcons";
 import {
   WorkArticle,
   WorkContent,
@@ -21,16 +23,21 @@ const LatestWork = ({ latestProjectData }) => {
   return (
     <WorkSection id="work">
       <WorkSectionTitle>Mi último trabajo</WorkSectionTitle>
-      <WorkImageContainer>
-        <WorkImage src={LatestWorkImage} alt="" />
-      </WorkImageContainer>
+      <Link href={uri} passHref>
+        <WorkImageContainer>
+          <WorkImage src={LatestWorkImage} alt="" />
+        </WorkImageContainer>
+      </Link>
       <WorkArticle>
         <WorkContent>
           <WorkSubtitle>{category}</WorkSubtitle>
-          <WorkTitle>
-            {title}
-            <span> →</span>
-          </WorkTitle>
+          <Link href={uri} passHref>
+            <LatestWorkTitle>
+              {title}
+              <span> →</span>
+            </LatestWorkTitle>
+          </Link>
+          <TechnologyIcons technologyIcons={technologyIcons} />
           <WorkDescription>{description}</WorkDescription>
           <Link href={uri} passHref>
             <WorkCTA>Ver proyecto</WorkCTA>
@@ -45,6 +52,9 @@ const LatestWork = ({ latestProjectData }) => {
   );
 };
 
+const LatestWorkTitle = tw(WorkTitle)`
+mb-2 md:mb-4 w-[80%]
+`;
 const WorkSectionTitle = tw.h3`text-xl font-bold mb-5 md:text-3xl `;
 
 const WorkSection = tw(Section)`

@@ -13,7 +13,7 @@ const NavbarMenu = ({ open }) => {
   }, []);
   // For menus
   // const { menus } = data;
-  // console.log(menus);
+
   return (
     <Nav open={open} mobileScreen={mobileScreen}>
       <List open={open} mobileScreen={mobileScreen}>

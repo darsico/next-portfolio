@@ -6,9 +6,9 @@ export const WorkSecondImage = tw.img` hidden -mt-40 md:inline w-36 justify-self
 
 export const WorkArticle = tw.article`grid grid-cols-3 gap-4`;
 
-export const WorkContent = tw.div`col-span-2`;
+export const WorkContent = tw.div`col-span-3 sm:col-span-2 `;
 
-export const WorkTitle = tw.h3`text-3xl font-medium md:text-5xl tracking-[-0.05em] cursor-pointer`;
+export const WorkTitle = tw.h3`text-3xl font-medium md:text-5xl tracking-[-0.05em] cursor-pointer `;
 
 export const WorkSubtitle = tw.h4`mt-2 text-base`;
 

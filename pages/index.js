@@ -30,8 +30,8 @@ export default function Home({ projects }) {
   const { title, description } = data.generalSettings;
   const latestProjectData = projects[0].node;
 
-  const pastProjectData = projects.filter((project, i) => i !== 0);
-  console.log(pastProjectData);
+  const pastProjectData = projects.filter((project, index) => index !== 0);
+
   return (
     <Layout title={title} description={description}>
       <Hero />
