@@ -48,13 +48,13 @@ const Contact = () => {
         router.push("/thank-you");
 
         captcha.current.reset();
-        setIsLoading(false);
       }
     } catch (error) {
       console.log(error);
     }
 
     setValidCaptcha(null);
+    setIsLoading(false);
   };
 
   const onChange = () => {
