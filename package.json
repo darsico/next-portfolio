@@ -9,7 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@hookform/error-message": "^2.0.0",
     "@types/react": "^18.0.6",
+    "axios": "^0.27.2",
     "babel-plugin-macros": "^3.1.0",
     "babel-plugin-styled-components": "^2.0.7",
     "babel-plugin-twin": "^1.0.2",
@@ -18,8 +20,11 @@
     "lottie-react": "^2.2.1",
     "nanoid": "^3.3.3",
     "next": "12.1.5",
+    "nodemailer": "^6.7.5",
     "react": "18.0.0",
     "react-dom": "18.0.0",
+    "react-google-recaptcha": "^2.1.0",
+    "react-hook-form": "^7.30.0",
     "react-icons": "^4.3.1",
     "styled-components": "^5.3.5",
     "twin.macro": "^2.8.2"
