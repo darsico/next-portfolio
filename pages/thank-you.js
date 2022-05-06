@@ -22,7 +22,7 @@ const ThankYouPage = () => {
           style={style}
           loop={true}
           autoplay={true}
-          className="w-[300px] md:w-[500px] mx-auto"
+          className="w-[300px] md:w-[500px] mx-auto -mt-20"
         />
         <div className="p-5 flex flex-col items-center justify-center h-full gap-4">
           <h1 className="text-5xl md:text-6xl font-semibold tracking-tighter text-center ">Gracias por tu mensaje!</h1>
@@ -41,7 +41,7 @@ const ThankYouPage = () => {
 };
 
 const ThankYouSection = tw(Section)`
-grid grid-cols-1 md:grid-cols-2 pt-0
+grid grid-cols-1 md:grid-cols-2 pt-0 
 `;
 
 export default ThankYouPage;
