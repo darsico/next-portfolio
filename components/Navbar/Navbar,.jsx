@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useState } from "react";
 import tw, { styled } from "twin.macro";
 
@@ -10,9 +11,13 @@ const Navbar = () => {
   return (
     <Header>
       <Nav>
-        <Logo>
-          Diego Huaman <LogoThin>| Portafolio </LogoThin>
-        </Logo>
+        <Link href="/" passHref>
+          <a>
+            <Logo>
+              Diego Huaman <LogoThin>| Portafolio </LogoThin>
+            </Logo>
+          </a>
+        </Link>
         <NavbarMenu open={open} setOpen={setOpen} />
         <MenuToggleButton setOpen={setOpen} open={open} />
       </Nav>
