@@ -41,9 +41,9 @@ const Contact = () => {
     try {
       const response = await axios(config);
       if (response.status === 200) {
-        captcha.current.reset();
         reset();
         setVerified(false);
+        captcha.current.reset();
         router.push("/thank-you");
       }
     } catch (error) {
