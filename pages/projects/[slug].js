@@ -4,7 +4,7 @@ import ProjectInfo from "../../components/Project/ProjectInfo.jsx";
 
 import requestData from "../../lib/request.js";
 import { QUERY_PROJECTS } from "../../src/queries/queryProjects.js";
-import { useRouter } from "next/router";
+
 
 export const getStaticPaths = async () => {
   const { projects } = await requestData(QUERY_PROJECTS);
@@ -13,7 +13,7 @@ export const getStaticPaths = async () => {
   const paths = slugs.map((slug) => ({ params: { slug: slug } }));
   return {
     paths,
-    fallback: true,
+    fallback: "blocking",
   };
 };
 
@@ -35,10 +35,6 @@ export const getStaticProps = async (context) => {
 
 const ProjectPage = ({ project }) => {
   const blocks = project.node.blocks;
-  const router = useRouter();
-  if (router.isFallback) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <Layout>
