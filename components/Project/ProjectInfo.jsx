@@ -63,6 +63,7 @@ const ProjectInfo = ({ project }) => {
             {demo.replace("https://", "")}
           </a>
         </li>
+        <p></p>
       </ul>
     </InfoSection>
   );
