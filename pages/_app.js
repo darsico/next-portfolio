@@ -8,20 +8,7 @@ import LoadingScreen from "../components/Loaders/Preloader/LoadingScreen";
 
 function App({ Component, pageProps, data }) {
   const [siteData, setSiteData] = useState(data);
-  const [loading, setLoading] = useState(false);
-  const [count, setCount] = useState(0);
-  useEffect(() => {
-    let counting = 0;
-    const counter = setInterval(() => {
-      counting = counting + 2;
-      setCount(counting);
-      if (counting >= 101) {
-        clearInterval(counter);
-        setLoading(true);
-        return;
-      }
-    }, 60);
-  }, []);
+
   return (
     <>
       <Head>
@@ -30,7 +17,7 @@ function App({ Component, pageProps, data }) {
       </Head>
 
       <SiteContext.Provider value={[siteData, setSiteData]}>
-        {loading ? <Component {...pageProps} /> : <LoadingScreen count={count} />}
+        <Component {...pageProps} />
       </SiteContext.Provider>
     </>
   );

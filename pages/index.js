@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import Hero from "../components/Hero";
 import Layout from "../components/Layout";
 import LatestWork from "../components/Work/LatestWork";
@@ -11,6 +11,7 @@ import { SiteContext } from "../context/SiteContext";
 
 import requestData from "../lib/request";
 import { QUERY_PROJECTS } from "../src/queries/queryProjects";
+
 
 export const getStaticProps = async () => {
   const { projects } = await requestData(QUERY_PROJECTS);
@@ -33,12 +34,14 @@ export default function Home({ projects }) {
   const pastProjectData = projects.filter((project, index) => index !== 0);
 
   return (
-    <Layout title={title} description={description}>
-      <Hero />
-      <LatestWork latestProjectData={latestProjectData} />
-      <Works pastProjectData={pastProjectData} />
-      <Connect />
-      <Contact />
-    </Layout>
+    <>
+      <Layout title={title} description={description}>
+        <Hero />
+        <LatestWork latestProjectData={latestProjectData} />
+        <Works pastProjectData={pastProjectData} />
+        <Connect />
+        <Contact />
+      </Layout>
+    </>
   );
 }
