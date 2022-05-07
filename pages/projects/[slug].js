@@ -12,7 +12,7 @@ export const getStaticPaths = async () => {
   const paths = slugs.map((slug) => ({ params: { slug: slug } }));
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 };
 
@@ -28,7 +28,7 @@ export const getStaticProps = async (context) => {
     props: {
       project,
     },
-    revalidate: 1,
+    revalidate: 30,
   };
 };
 
