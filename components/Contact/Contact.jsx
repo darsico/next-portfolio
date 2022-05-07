@@ -45,16 +45,16 @@ const Contact = () => {
       if (response.status === 200) {
         reset();
         setVerified(false);
-        router.push("/thank-you");
-
+        router.push("/thank-you", undefined, { shallow: true });
         captcha.current.reset();
+        setIsLoading(false);
       }
     } catch (error) {
       console.log(error);
     }
 
     setValidCaptcha(null);
-    setIsLoading(false);
+
   };
 
   const onChange = () => {
