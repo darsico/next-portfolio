@@ -11,7 +11,7 @@ import animConnect from "../../src/lotties/connect-lottie.json";
 
 import Section from "../Section";
 import Spinner from "../Loaders/Spinner.jsx";
-import tw from "twin.macro";
+
 
 const Contact = () => {
   const router = useRouter();
@@ -54,7 +54,6 @@ const Contact = () => {
     }
 
     setValidCaptcha(null);
-
   };
 
   const onChange = () => {
@@ -69,7 +68,8 @@ const Contact = () => {
         <Lottie animationData={animConnect} autoplay={true} loop={true} />
       </figure>
       {isLoading ? (
-        <div className="flex items-center justify-center border-[1px] border-black">
+        <div className="flex items-center justify-center border-[1px] border-gray-300 flex-col py-16 gap-4">
+          <h4 className="w-3/5 text-center">Su mensaje se está procesando y enviando</h4>
           <Spinner />
         </div>
       ) : (
