@@ -4,6 +4,7 @@ import ProjectInfo from "../../components/Project/ProjectInfo.jsx";
 
 import requestData from "../../lib/request.js";
 import { QUERY_PROJECTS } from "../../src/queries/queryProjects.js";
+import { useRouter } from "next/router";
 
 export const getStaticPaths = async () => {
   const { projects } = await requestData(QUERY_PROJECTS);
@@ -28,12 +29,17 @@ export const getStaticProps = async (context) => {
     props: {
       project,
     },
-    revalidate: 30,
+    revalidate: 1,
   };
 };
 
 const ProjectPage = ({ project }) => {
   const blocks = project.node.blocks;
+  const router = useRouter();
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <Layout>
       <ProjectInfo project={project} />
