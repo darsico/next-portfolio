@@ -1,10 +1,10 @@
 import "../styles/globals.css";
 import { SiteContext } from "../context/SiteContext";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import requestData from "../lib/request";
 import { QUERY_SITE_DATA } from "../data/site";
 import Head from "next/head";
-import LoadingScreen from "../components/Loaders/Preloader/LoadingScreen";
+
 
 function App({ Component, pageProps, data }) {
   const [siteData, setSiteData] = useState(data);

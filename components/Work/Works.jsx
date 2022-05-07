@@ -11,10 +11,11 @@ const Works = ({ pastProjectData }) => {
     <WorkGridSection>
       {pastProjectData.map((project) => {
         const { databaseId, uri, title, projectCustomFields, categories } = project.node;
-        const { technologyIcons, ctaImage } = projectCustomFields;
+        const { technologyIcons, ctaImage, description } = projectCustomFields;
 
         const category = categories.edges[0].node.name;
         const projectImage = ctaImage.sourceUrl;
+        console.log(description);
         return (
           <Link href={uri} key={databaseId}>
             <a>
@@ -26,9 +27,7 @@ const Works = ({ pastProjectData }) => {
                   <h5 className="-mb-2 text-sm">{category}</h5>
                   <h3 className="text-2xl font-semibold leading-6 tracking-tighter cursor-pointer">{title}</h3>
                   <TechnologyIcons technologyIcons={technologyIcons} />
-                  <p className="text-base leading-5">
-                    Aprendizaje del hook useState ademas de métodos como .map() y .filter()
-                  </p>
+                  <p className="text-base leading-5">{description ? description : ""}</p>
                 </div>
               </article>
             </a>

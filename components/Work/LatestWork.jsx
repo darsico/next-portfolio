@@ -62,7 +62,7 @@ const WorkSection = tw(Section)`
 `;
 
 const WorkImageContainer = tw.figure`
-w-full
+w-full cursor-pointer
 `;
 
 export default LatestWork;
