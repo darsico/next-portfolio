@@ -68,8 +68,10 @@ const Contact = () => {
         <Lottie animationData={animConnect} autoplay={true} loop={true} />
       </figure>
       {isLoading ? (
-        <div className="flex items-center justify-center border-[1px] border-gray-300 flex-col py-16 gap-4">
-          <h4 className="w-3/5 text-center">Su mensaje se está procesando y enviando</h4>
+        <div className="flex items-center justify-center border-[1px] border-gray-300 flex-col py-16 px-10 gap-4">
+          <h4 className="w-4/5 text-center leading-8 text-3xl tracking-tighter text-black font-light">
+            Su mensaje se está procesando y enviando
+          </h4>
           <Spinner />
         </div>
       ) : (
