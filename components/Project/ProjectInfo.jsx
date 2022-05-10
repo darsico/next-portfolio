@@ -24,7 +24,11 @@ const ProjectInfo = ({ project }) => {
             <ul className="flex flex-col gap-2">
               {iconsList.map((icon, index) => {
                 return (
+<<<<<<< HEAD
                   <li key={index} className="flex items-center justify-start gap-1 text-base">
+=======
+                  <li key={index} className="text-base flex gap-1 items-center justify-start">
+>>>>>>> main
                     <div className="grid col-start-1 col-end-2 gap-x-2 ">
                       {icon.source && (
                         <figure

@@ -5,6 +5,7 @@ import ProjectInfo from "../../components/Project/ProjectInfo.jsx";
 import requestData from "../../lib/request.js";
 import { QUERY_PROJECTS } from "../../src/queries/queryProjects.js";
 
+
 export const getStaticPaths = async () => {
   const { projects } = await requestData(QUERY_PROJECTS);
   const projectsData = projects.edges;
@@ -12,7 +13,7 @@ export const getStaticPaths = async () => {
   const paths = slugs.map((slug) => ({ params: { slug: slug } }));
   return {
     paths,
-    fallback: false,
+    fallback: "blocking",
   };
 };
 
@@ -34,6 +35,7 @@ export const getStaticProps = async (context) => {
 
 const ProjectPage = ({ project }) => {
   const blocks = project.node.blocks;
+
   return (
     <Layout>
       <ProjectInfo project={project} />

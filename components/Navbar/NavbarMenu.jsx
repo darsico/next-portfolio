@@ -33,7 +33,6 @@ const Nav = styled.nav(({ open, mobileScreen }) => [
     ? tw`fixed top-0 left-0 h-screen w-screen bg-[#ececec] justify-center items-center  z-30`
     : tw`hidden`,
   tw`transition-all md:ml-auto md:block`,
-  `transform: translateX(-5%);`,
 ]);
 
 const List = styled.ul(({ open, mobileScreen }) => [
