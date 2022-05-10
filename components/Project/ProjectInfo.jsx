@@ -1,4 +1,3 @@
-
 import tw from "twin.macro";
 import Image from "next/image";
 import { BsGithub } from "react-icons/bs";
@@ -25,13 +24,19 @@ const ProjectInfo = ({ project }) => {
             <ul className="flex flex-col gap-2">
               {iconsList.map((icon, index) => {
                 return (
-                  <li key={index} className="text-base flex gap-1 items-center justify-start">
-                    {icon.source && (
-                      <figure style={{ position: "relative", width: "1.2rem", paddingBottom: "1.2rem" }} key={index}>
-                        <Image alt="" src={icon.source} layout="fill" objectFit="contain" />
-                      </figure>
-                    )}
-                    <p>{icon.name}</p>
+                  <li key={index} className="flex items-center justify-start gap-1 text-base">
+                    <div className="grid col-start-1 col-end-2 gap-x-2 ">
+                      {icon.source && (
+                        <figure
+                          style={{ position: "relative", width: "1.2rem", paddingBottom: "1.2rem" }}
+                          key={index}
+                          className="col-span-1"
+                        >
+                          <Image alt="" src={icon.source} layout="fill" objectFit="contain" />
+                        </figure>
+                      )}
+                      <p className="col-start-2 col-end-5">{icon.name}</p>
+                    </div>
                   </li>
                 );
               })}
@@ -57,6 +62,7 @@ const ProjectInfo = ({ project }) => {
             {demo.replace("https://", "")}
           </a>
         </li>
+        <p></p>
       </ul>
     </InfoSection>
   );
@@ -67,7 +73,7 @@ const InfoSection = tw(Section)`
 `;
 
 const InfoTitle = tw.h1`
-col-span-3 row-start-1 row-end-2 text-3xl font-semibold leading-6 tracking-tighter md:grid-cols-6 h-[fit-content] lg:col-start-3 lg:col-end-7 lg:justify-self-center lg:self-start lg:text-4xl
+col-span-3 row-start-1 row-end-2 text-3xl font-semibold leading-6 tracking-tighter md:grid-cols-6 h-[fit-content] lg:col-start-3 lg:col-end-7 lg:justify-self-center lg:self-start lg:text-4xl mb-4 md:mb-0
 
 `;
 
