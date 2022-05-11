@@ -1,4 +1,3 @@
-
 import tw from "twin.macro";
 import Image from "next/image";
 import { BsGithub } from "react-icons/bs";
@@ -23,24 +22,25 @@ const ProjectInfo = ({ project }) => {
           <li className="mb-2 text-xs leading-tight uppercase">Tecnologías usadas</li>
           <li>
             <ul className="flex flex-col gap-2">
-              {iconsList.map((icon, index) => {
-                return (
-                  <li key={index} className="text-base flex gap-1 items-center justify-start">
-                    <div className="grid col-start-1 col-end-2 gap-x-2 ">
-                      {icon.source && (
-                        <figure
-                          style={{ position: "relative", width: "1.2rem", paddingBottom: "1.2rem" }}
-                          key={index}
-                          className="col-span-1"
-                        >
-                          <Image alt="" src={icon.source} layout="fill" objectFit="contain" />
-                        </figure>
-                      )}
-                      <p className="col-start-2 col-end-5">{icon.name}</p>
-                    </div>
-                  </li>
-                );
-              })}
+              {iconsList &&
+                iconsList.map((icon, index) => {
+                  return (
+                    <li key={index} className="text-base flex gap-1 items-center justify-start">
+                      <div className="grid col-start-1 col-end-2 gap-x-2 ">
+                        {icon.source && (
+                          <figure
+                            style={{ position: "relative", width: "1.2rem", paddingBottom: "1.2rem" }}
+                            key={index}
+                            className="col-span-1"
+                          >
+                            <Image alt="" src={icon.source} layout="fill" objectFit="contain" />
+                          </figure>
+                        )}
+                        <p className="col-start-2 col-end-5">{icon.name}</p>
+                      </div>
+                    </li>
+                  );
+                })}
             </ul>
           </li>
         </ul>

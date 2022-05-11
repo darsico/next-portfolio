@@ -11,7 +11,7 @@ import { SiteContext } from "../context/SiteContext";
 
 import requestData from "../lib/request";
 import { QUERY_PROJECTS } from "../src/queries/queryProjects";
-
+import Filter from "../components/Filter/Filter";
 
 export const getStaticProps = async () => {
   const { projects } = await requestData(QUERY_PROJECTS);
@@ -31,14 +31,17 @@ export default function Home({ projects }) {
   const { title, description } = data.generalSettings;
   const latestProjectData = projects[0].node;
 
-  const pastProjectData = projects.filter((project, index) => index !== 0);
+  const [filteredProjects, setFilteredProjects] = useState(projects);
 
+  // TODO context for webDevProjects and designProjects
+  // Todo filtered projects Context
   return (
     <>
       <Layout title={title} description={description}>
         <Hero />
         <LatestWork latestProjectData={latestProjectData} />
-        <Works pastProjectData={pastProjectData} />
+        <Filter projects={projects} setFilteredProjects={setFilteredProjects} />
+        <Works filteredProjects={filteredProjects} />
         <Connect />
         <Contact />
       </Layout>
