@@ -1,10 +1,14 @@
 import Image from "next/image";
 import { getIconsSource } from "../../src/utils/Works/getIconsSource";
-const TechnologyIcons = ({ technologyIcons }) => {
+const TechnologyIcons = ({ technologyIcons, scaleDown }) => {
   const iconSources = getIconsSource(technologyIcons);
 
   return (
-    <div className="text-sm font-medium leading-3 text-gray-700 flex gap-1 items-center">
+    <div
+      className={`${
+        scaleDown ? "scale-75 -translate-x-[13%]" : ""
+      } text-sm font-medium leading-3 text-gray-700 flex gap-1 items-center`}
+    >
       {iconSources &&
         iconSources.map((iconSource, index) => {
           return (
