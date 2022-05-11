@@ -20,6 +20,7 @@ export const QUERY_PROJECTS = gql`
             githubRepository
             demo
             description
+            designTags
           }
           slug
           title

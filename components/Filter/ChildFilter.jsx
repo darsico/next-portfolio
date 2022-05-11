@@ -1,44 +1,36 @@
-const ChildFilter = ({ setFilteredProjects, projects }) => {
-  const showAllTags = () => {
-    setFilteredProjects(projects);
-  };
+import DesignTags from "./DesignTags";
+import WebDevTags from "./WebDevTags";
 
-  const handleTagClick = (e) => {
+const ChildFilter = ({ setFilteredProjects, toggle, webDevProjects, designProjects }) => {
+  const handleWebDevClick = (e) => {
     const selectedTag = e.target.innerText;
-    const projectsBeingFiltered = projects.filter((item) =>
-      item.node.projectCustomFields.technologies.includes(selectedTag)
-    );
+    const projectsBeingFiltered = webDevProjects.filter((item) => {
+      return item.node.projectCustomFields.technologies.includes(selectedTag);
+    });
     setFilteredProjects(projectsBeingFiltered);
   };
 
-  const differentProjectsTags = projects.map((project) => {
-    const projectTechnologies = project.node.projectCustomFields.technologies;
-    return projectTechnologies;
-  });
-  const allProjectTags = [].concat(...differentProjectsTags);
-  let tagsCount = {};
-  allProjectTags.forEach((element) => {
-    tagsCount[element] = (tagsCount[element] || 0) + 1;
-  });
+  const handleDesignClick = (e) => {
+    const selectedTag = e.target.innerText;
+    const projectsBeingFiltered = designProjects.filter((item) => {
+      return item.node.projectCustomFields.designTags.includes(selectedTag);
+    });
+    setFilteredProjects(projectsBeingFiltered);
+  };
 
   return (
     <div className="flex gap-2 mt-3  flex-wrap">
-      <button onClick={showAllTags} className="text-base font-light">
-        Todos
-      </button>
-      {Object.entries(tagsCount).map(([key, value], index) => {
-        console.log(key);
-        return (
-          <button
-            key={index}
-            onClick={(e) => handleTagClick(e)}
-            className="active:underline text-xs font-light flex items-start"
-          >
-            <span className="text-base hover:underline">{key}</span>
-            {value}
-          </button>
-        );
-      })}
+      {toggle === 1 ? (
+        <button onClick={() => setFilteredProjects(webDevProjects)} className="text-base font-light">
+          Todos
+        </button>
+      ) : (
+        <button onClick={() => setFilteredProjects(designProjects)} className="text-base font-light">
+          Todos
+        </button>
+      )}
+      {toggle === 1 && <WebDevTags handleWebDevClick={handleWebDevClick} webDevProjects={webDevProjects} />}
+      {toggle === 2 && <DesignTags handleDesignClick={handleDesignClick} designProjects={designProjects} />}
     </div>
   );
 };

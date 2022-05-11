@@ -5,6 +5,7 @@ import Image from "next/image";
 import { icons } from "react-icons";
 
 import TechnologyIcons from "./TechnologyIcons";
+import DesignTags from "./DesignTags";
 
 const Works = ({ filteredProjects }) => {
   return (
@@ -12,11 +13,11 @@ const Works = ({ filteredProjects }) => {
       {filteredProjects &&
         filteredProjects.map((project) => {
           const { databaseId, uri, title, projectCustomFields, categories } = project.node;
-          const { technologyIcons, ctaImage, description } = projectCustomFields;
+          const { technologyIcons, ctaImage, description, designTags } = projectCustomFields;
 
           const category = categories.edges[0].node.name;
           const projectImage = ctaImage.sourceUrl;
-          console.log(description);
+
           return (
             <Link href={uri} key={databaseId}>
               <a>
@@ -27,7 +28,12 @@ const Works = ({ filteredProjects }) => {
                   <div className="flex flex-col gap-2 py-3 ">
                     <h5 className="-mb-2 text-sm">{category}</h5>
                     <h3 className="text-2xl font-semibold leading-6 tracking-tighter cursor-pointer">{title}</h3>
-                    <TechnologyIcons technologyIcons={technologyIcons} scaleDown={true} />
+                    {category === "Desarrollo Web" || category === "Web Development" ? (
+                      <TechnologyIcons technologyIcons={technologyIcons} scaleDown={true} />
+                    ) : (
+                      <DesignTags designTags={designTags} />
+                    )}
+
                     <p className="text-base leading-5">{description ? description : ""}</p>
                   </div>
                 </article>

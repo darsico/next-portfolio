@@ -31,11 +31,10 @@ export default function Home({ projects }) {
   const { title, description } = data.generalSettings;
   const latestProjectData = projects[0].node;
 
-  // const pastProjectData = projects.filter((project, index) => index !== 0);
-  // pastProjectData={pastProjectData} //works props
-  const pastProjectData = projects;
-
   const [filteredProjects, setFilteredProjects] = useState(projects);
+
+  // TODO context for webDevProjects and designProjects
+  // Todo filtered projects Context
   return (
     <>
       <Layout title={title} description={description}>

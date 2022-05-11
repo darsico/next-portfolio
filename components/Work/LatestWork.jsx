@@ -2,6 +2,7 @@ import Link from "next/link";
 import tw from "twin.macro";
 import { getIconsSource } from "../../src/utils/Works/getIconsSource";
 import Section from "../Section";
+import DesignTags from "./DesignTags";
 import TechnologyIcons from "./TechnologyIcons";
 import {
   WorkArticle,
@@ -16,10 +17,11 @@ import {
 
 const LatestWork = ({ latestProjectData }) => {
   const { projectCustomFields, title, categories, uri } = latestProjectData;
-  const { ctaImage, demo, githubRepository, technologies, technologyIcons, description } = projectCustomFields;
+  const { ctaImage, demo, githubRepository, designTags, technologyIcons, description } = projectCustomFields;
   const LatestWorkImage = ctaImage.sourceUrl;
   const category = categories.edges[0].node.name;
-
+  // console.log(designTags);
+  // console.log(category);
   return (
     <WorkSection id="work">
       <WorkSectionTitle>Mi último trabajo</WorkSectionTitle>
@@ -37,7 +39,11 @@ const LatestWork = ({ latestProjectData }) => {
               <span> →</span>
             </LatestWorkTitle>
           </Link>
-          <TechnologyIcons technologyIcons={technologyIcons} />
+          {category === "Desarrollo Web" || category === "Web Development" ? (
+            <TechnologyIcons technologyIcons={technologyIcons} />
+          ) : (
+            <DesignTags designTags={designTags} />
+          )}
           <WorkDescription>{description}</WorkDescription>
           <Link href={uri} passHref>
             <WorkCTA>Ver proyecto</WorkCTA>
