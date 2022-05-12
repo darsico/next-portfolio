@@ -1,10 +1,8 @@
-import tw, { styled } from "twin.macro";
+import tw from "twin.macro";
 
 const StandardButton = ({ text, color }) => {
   return (
-    <>
-      <StyledButton>{text}</StyledButton>
-    </>
+    <p className="w-fit py-1 px-4 rounded-full border border-gray-900 hover:bg-black hover:text-[#ececec]">{text}</p>
   );
 };
 

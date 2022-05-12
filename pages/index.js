@@ -31,7 +31,13 @@ export default function Home({ projects }) {
   const [data] = useContext(SiteContext);
   const { title, description } = data.generalSettings;
   const latestProjectData = projects[0].node;
-  const [filteredProjects, setFilteredProjects] = useState(projects);
+
+  const initialRenderWebDevProjects = projects.filter((item) => {
+    const { categories } = item.node;
+    const category = categories.edges[0].node.name;
+    if (category === "Desarrollo Web" || category === "Web Development") return item.node;
+  });
+  const [filteredProjects, setFilteredProjects] = useState(initialRenderWebDevProjects);
 
   const designProjectsContext = useRef(useContext(DesignProjectsContext));
   const webDevProjectsContext = useRef(useContext(WebDevProjectsContext));
@@ -44,11 +50,9 @@ export default function Home({ projects }) {
     webDevProjectsContext.current.feedWebDevData(dataProjects.current);
   }, []);
 
-  // TODO context for webDevProjects and designProjects
-  // Todo filtered projects Context
   return (
     <>
-      <Layout title={title} description={description}>
+      <Layout>
         <Hero />
         <LatestWork latestProjectData={latestProjectData} />
         <Filter projects={projects} setFilteredProjects={setFilteredProjects} />

@@ -2,7 +2,6 @@ import tw from "twin.macro";
 import Section from "../Section";
 import Link from "next/link";
 import Image from "next/image";
-import { icons } from "react-icons";
 
 import TechnologyIcons from "./TechnologyIcons";
 import DesignTags from "./DesignTags";

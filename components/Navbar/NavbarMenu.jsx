@@ -3,6 +3,7 @@ import { SiteContext } from "../../context/SiteContext";
 
 import tw, { styled } from "twin.macro";
 import StandardButton from "../Buttons/StandarButton";
+import Link from "next/link";
 
 const NavbarMenu = ({ open }) => {
   const [mobileScreen, setMobileScreen] = useState();
@@ -18,10 +19,19 @@ const NavbarMenu = ({ open }) => {
     <Nav open={open} mobileScreen={mobileScreen}>
       <List open={open} mobileScreen={mobileScreen}>
         <li>
-          <Anchor href="#experience">Experiencia</Anchor>
+          <Anchor href="#experience">Mi CV</Anchor>
         </li>
         <li>
-          <StandardButton text="Di hola" />
+          <Link href="/#projects">
+            <a>Proyectos</a>
+          </Link>
+        </li>
+        <li>
+          <Link href={"/#contact"} passHref>
+            <a>
+              <StandardButton text="Di hola" />
+            </a>
+          </Link>
         </li>
       </List>
     </Nav>
@@ -43,6 +53,5 @@ const List = styled.ul(({ open, mobileScreen }) => [
 ]);
 
 const Anchor = tw.a`text-2xl md:text-base`;
-
 
 export default NavbarMenu;

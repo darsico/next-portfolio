@@ -4,7 +4,7 @@ import WebDevProjectsContext from "../../context/WebDevProjectContext";
 import Section from "../Section";
 import ChildFilter from "./ChildFilter";
 
-const Filter = ({ projects, setFilteredProjects }) => {
+const Filter = ({ setFilteredProjects }) => {
   const [toggle, setToggle] = useState(1);
   const designContext = useContext(DesignProjectsContext);
   const webDevContext = useContext(WebDevProjectsContext);
@@ -32,7 +32,7 @@ const Filter = ({ projects, setFilteredProjects }) => {
   };
 
   return (
-    <Section className="flex flex-col md:pb-10 md:pt-0">
+    <Section className="flex flex-col md:pb-10 md:pt-0" id="projects">
       <div className="flex gap-3 text-xl">
         <button onClick={handleWebDevClick} className={toggleStyle(1)}>
           Desarrollo Web
