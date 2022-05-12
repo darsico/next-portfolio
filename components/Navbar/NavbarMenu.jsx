@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import tw, { styled } from "twin.macro";
 import StandardButton from "../Buttons/StandarButton";
 import Link from "next/link";
+import useWindowsSize from "../../hooks/useWindowsSize";
 
 const NavbarMenu = ({ open, setOpen }) => {
   const [mobileScreen, setMobileScreen] = useState();
@@ -12,12 +13,15 @@ const NavbarMenu = ({ open, setOpen }) => {
     setMobileScreen(screen);
   }, []);
 
+  const windowSize = useWindowsSize();
+
   const handleLinkClick = () => {
-    if (screen) {
-      setOpen(false);
-    }
+    setOpen(false);
   };
 
+  if (windowSize.width > 768) {
+    setOpen(false);
+  }
   return (
     <Nav open={open} mobileScreen={mobileScreen} className="">
       <List open={open} mobileScreen={mobileScreen}>
@@ -51,7 +55,7 @@ const NavbarMenu = ({ open, setOpen }) => {
 
 const Nav = styled.nav(({ open, mobileScreen }) => [
   open && mobileScreen
-    ? tw`fixed top-0 left-0 h-screen w-screen bg-[#ececec] justify-start items-start  z-30`
+    ? tw`fixed top-0 left-0 h-screen w-screen bg-[#ececec] justify-start items-start z-30`
     : tw`hidden`,
   tw`transition-all md:ml-auto md:block md:justify-center`,
 ]);
