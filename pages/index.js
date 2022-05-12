@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import Hero from "../components/Hero";
 import Layout from "../components/Layout";
 import LatestWork from "../components/Work/LatestWork";
@@ -12,6 +12,8 @@ import { SiteContext } from "../context/SiteContext";
 import requestData from "../lib/request";
 import { QUERY_PROJECTS } from "../src/queries/queryProjects";
 import Filter from "../components/Filter/Filter";
+import DesignProjectsContext from "../context/DesignProjectsContext";
+import WebDevProjectsContext from "../context/WebDevProjectContext";
 
 export const getStaticProps = async () => {
   const { projects } = await requestData(QUERY_PROJECTS);
@@ -26,12 +28,21 @@ export const getStaticProps = async () => {
 };
 
 export default function Home({ projects }) {
-  const [data, setData] = useContext(SiteContext);
-
+  const [data] = useContext(SiteContext);
   const { title, description } = data.generalSettings;
   const latestProjectData = projects[0].node;
-
   const [filteredProjects, setFilteredProjects] = useState(projects);
+
+  const designProjectsContext = useRef(useContext(DesignProjectsContext));
+  const webDevProjectsContext = useRef(useContext(WebDevProjectsContext));
+
+  const dataProjects = useRef(projects);
+
+  useEffect(() => {
+    designProjectsContext.current.feedDesignData(dataProjects.current);
+
+    webDevProjectsContext.current.feedWebDevData(dataProjects.current);
+  }, []);
 
   // TODO context for webDevProjects and designProjects
   // Todo filtered projects Context

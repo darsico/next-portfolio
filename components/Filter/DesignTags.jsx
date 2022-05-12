@@ -1,14 +1,11 @@
-const DesignTags = ({ designProjects, handleDesignClick }) => {
-  const designTags = designProjects.reduce((filtered, project) => {
-    const filteredDesignTags = project.node.projectCustomFields.designTags;
-    if (filteredDesignTags !== null) filtered.push(filteredDesignTags);
-    return filtered;
-  }, []);
-  const allDesignTags = [].concat(...designTags);
+import { useContext } from "react";
+import DesignProjectsContext from "../../context/DesignProjectsContext";
 
+const DesignTags = ({ handleDesignClick }) => {
+  const designContext = useContext(DesignProjectsContext);
   return (
     <>
-      {allDesignTags.map((designTag, index) => {
+      {designContext.tags.map((designTag, index) => {
         return (
           <button
             key={index}

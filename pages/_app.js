@@ -4,7 +4,8 @@ import { useState } from "react";
 import requestData from "../lib/request";
 import { QUERY_SITE_DATA } from "../data/site";
 import Head from "next/head";
-
+import { DesignProjectsProvider } from "../context/DesignProjectsContext";
+import { WebDevProjectsProvider } from "../context/WebDevProjectContext";
 
 function App({ Component, pageProps, data }) {
   const [siteData, setSiteData] = useState(data);
@@ -15,10 +16,13 @@ function App({ Component, pageProps, data }) {
         <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-
-      <SiteContext.Provider value={[siteData, setSiteData]}>
-        <Component {...pageProps} />
-      </SiteContext.Provider>
+      <WebDevProjectsProvider>
+        <DesignProjectsProvider>
+          <SiteContext.Provider value={[siteData, setSiteData]}>
+            <Component {...pageProps} />
+          </SiteContext.Provider>
+        </DesignProjectsProvider>
+      </WebDevProjectsProvider>
     </>
   );
 }

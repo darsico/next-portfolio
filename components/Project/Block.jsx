@@ -1,5 +1,3 @@
-import { useContext } from "react";
-import { ProjectBlockContext } from "../../context/ProjectBlockContext";
 import HeadingBlock from "./Blocks/HeadingBlock";
 import ImageBlock from "./Blocks/ImageBlock";
 import ListBlock from "./Blocks/ListBlock";
