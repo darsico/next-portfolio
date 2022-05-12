@@ -22,7 +22,7 @@ const Works = ({ filteredProjects }) => {
               <a>
                 <article className="">
                   <figure style={{ position: "relative", width: "100%", paddingBottom: "60%" }}>
-                    <Image alt="" src={projectImage} layout="fill" objectFit="cover" />
+                    <Image alt="" src={projectImage} layout="fill" objectFit="cover" priority />
                   </figure>
                   <div className="flex flex-col gap-2 py-3 ">
                     <h5 className="-mb-2 text-sm">{category}</h5>
