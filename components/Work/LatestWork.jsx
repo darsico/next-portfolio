@@ -20,8 +20,7 @@ const LatestWork = ({ latestProjectData }) => {
   const { ctaImage, demo, githubRepository, designTags, technologyIcons, description } = projectCustomFields;
   const LatestWorkImage = ctaImage.sourceUrl;
   const category = categories.edges[0].node.name;
-  // console.log(designTags);
-  // console.log(category);
+
   return (
     <WorkSection id="work">
       <WorkSectionTitle>Mi último trabajo</WorkSectionTitle>

@@ -1,7 +1,16 @@
+import { useContext } from "react";
+import DesignProjectsContext from "../../context/DesignProjectsContext";
+import WebDevProjectsContext from "../../context/WebDevProjectContext";
 import DesignTags from "./DesignTags";
 import WebDevTags from "./WebDevTags";
 
-const ChildFilter = ({ setFilteredProjects, toggle, webDevProjects, designProjects }) => {
+const ChildFilter = ({ setFilteredProjects, toggle }) => {
+  const designContext = useContext(DesignProjectsContext);
+  const designProjects = designContext.projects;
+
+  const webDevContext = useContext(WebDevProjectsContext);
+  const webDevProjects = webDevContext.projects;
+
   const handleWebDevClick = (e) => {
     const selectedTag = e.target.innerText;
     const projectsBeingFiltered = webDevProjects.filter((item) => {
@@ -29,8 +38,8 @@ const ChildFilter = ({ setFilteredProjects, toggle, webDevProjects, designProjec
           Todos
         </button>
       )}
-      {toggle === 1 && <WebDevTags handleWebDevClick={handleWebDevClick} webDevProjects={webDevProjects} />}
-      {toggle === 2 && <DesignTags handleDesignClick={handleDesignClick} designProjects={designProjects} />}
+      {toggle === 1 && <WebDevTags handleWebDevClick={handleWebDevClick} />}
+      {toggle === 2 && <DesignTags handleDesignClick={handleDesignClick} />}
     </div>
   );
 };

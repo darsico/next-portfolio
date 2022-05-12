@@ -8,40 +8,44 @@ import Section from "../Section";
 
 const ProjectInfo = ({ project }) => {
   const { title, categories, date, projectCustomFields } = project.node;
-  const { technologies, githubRepository, demo, technologyIcons } = projectCustomFields;
+  const { technologies, githubRepository, demo, technologyIcons, designTags } = projectCustomFields;
   const category = categories.edges[0].node.name;
 
   const iconsSource = getIconsSource(technologyIcons);
   const iconsList = getIconNameAndSource(iconsSource, technologies);
-
+  console.log(designTags);
+  const isWebDevCategory = category === "Desarrollo Web" || category === "Web Development";
   return (
     <InfoSection>
       <InfoTitle>{title}</InfoTitle>
       <div className="flex flex-col justify-between row-start-2 row-end-3 space-y-10 lg:col-start-8 lg:col-end-9 lg:row-start-1">
         <ul>
-          <li className="mb-2 text-xs leading-tight uppercase">Tecnologías usadas</li>
+          {isWebDevCategory && <li className="mb-2 text-xs leading-tight uppercase">Tecnologías usadas</li>}
           <li>
-            <ul className="flex flex-col gap-2">
-              {iconsList &&
-                iconsList.map((icon, index) => {
-                  return (
-                    <li key={index} className="text-base flex gap-1 items-center justify-start">
-                      <div className="grid col-start-1 col-end-2 gap-x-2 ">
-                        {icon.source && (
-                          <figure
-                            style={{ position: "relative", width: "1.2rem", paddingBottom: "1.2rem" }}
-                            key={index}
-                            className="col-span-1"
-                          >
-                            <Image alt="" src={icon.source} layout="fill" objectFit="contain" />
-                          </figure>
-                        )}
-                        <p className="col-start-2 col-end-5">{icon.name}</p>
-                      </div>
-                    </li>
-                  );
-                })}
-            </ul>
+            {<p className="text-sm">{designTags && designTags.join(", ")}</p>}
+            {iconsList && (
+              <ul className="flex flex-col gap-2">
+                {iconsList &&
+                  iconsList.map((icon, index) => {
+                    return (
+                      <li key={index} className="text-base flex gap-1 items-center justify-start">
+                        <div className="grid col-start-1 col-end-2 gap-x-2 ">
+                          {icon.source && (
+                            <figure
+                              style={{ position: "relative", width: "1.2rem", paddingBottom: "1.2rem" }}
+                              key={index}
+                              className="col-span-1"
+                            >
+                              <Image alt="" src={icon.source} layout="fill" objectFit="contain" />
+                            </figure>
+                          )}
+                          <p className="col-start-2 col-end-5">{icon.name}</p>
+                        </div>
+                      </li>
+                    );
+                  })}
+              </ul>
+            )}
           </li>
         </ul>
         <h4 className="text-sm text-gray-600 md:text-base">{category}</h4>
@@ -51,16 +55,18 @@ const ProjectInfo = ({ project }) => {
           <h5 className="text-xs uppercase">Date</h5>
           <p className="text-sm">{dateFormatter(date)}</p>
         </li>
+        {isWebDevCategory && (
+          <li>
+            <h5 className="text-xs uppercase ">Repositorio</h5>
+            <a href={githubRepository} target="_blank" rel="noreferrer">
+              <BsGithub className="mt-2 -ml-1 scale-125 icon" alt="Github de Diego" />
+            </a>
+          </li>
+        )}
         <li>
-          <h5 className="text-xs uppercase ">Repositorio</h5>
-          <a href={githubRepository} target="_blank" rel="noreferrer">
-            <BsGithub className="mt-2 -ml-1 scale-125 icon" alt="Github de Diego" />
-          </a>
-        </li>
-        <li>
-          <h5 className="text-xs uppercase">Demo</h5>
+          <h5 className="text-xs uppercase">{demo && isWebDevCategory ? "Demo" : "Link"}</h5>
           <a className="text-base font-bold hover:text-gray-600" target="_blank" rel="noreferrer" href={demo}>
-            {demo.replace("https://", "")}
+            {demo && demo.replace("https://", "")}
           </a>
         </li>
         <p></p>
