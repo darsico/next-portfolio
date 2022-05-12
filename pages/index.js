@@ -46,7 +46,7 @@ export default function Home({ projects }) {
 
   useEffect(() => {
     designProjectsContext.current.feedDesignData(dataProjects.current);
-
+    document.cookie = "cookie2=value2; SameSite=None; Secure";
     webDevProjectsContext.current.feedWebDevData(dataProjects.current);
   }, []);
 

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import tw from "twin.macro";
 import { getIconsSource } from "../../src/utils/Works/getIconsSource";
@@ -18,7 +19,7 @@ import {
 const LatestWork = ({ latestProjectData }) => {
   const { projectCustomFields, title, categories, uri } = latestProjectData;
   const { ctaImage, demo, githubRepository, designTags, technologyIcons, description } = projectCustomFields;
-  const LatestWorkImage = ctaImage.sourceUrl;
+  const latestWorkImage = ctaImage.sourceUrl;
   const category = categories.edges[0].node.name;
 
   return (
@@ -26,7 +27,18 @@ const LatestWork = ({ latestProjectData }) => {
       <WorkSectionTitle>Mi último trabajo</WorkSectionTitle>
       <Link href={uri} passHref>
         <WorkImageContainer>
-          <WorkImage src={LatestWorkImage} alt="" />
+          <figure className="relative w-full pb-[50%] md:pb-[30%]">
+            <Image
+              alt=""
+              src={latestWorkImage}
+              layout="fill"
+              objectFit="cover"
+              quality={100}
+              placeholder="blur"
+              blurDataURL="data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAADAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAf/xAAbEAADAAMBAQAAAAAAAAAAAAABAgMABAURUf/EABUBAQEAAAAAAAAAAAAAAAAAAAIF/8QAFxEAAwEAAAAAAAAAAAAAAAAAAAECEf/aAAwDAQACEQMRAD8AntO30Y6vPiu0zzlpwnMVAoVUTACgsCfB8xjGT6iW9aBiP//Z"
+              priority
+            />
+          </figure>
         </WorkImageContainer>
       </Link>
       <WorkArticle>
