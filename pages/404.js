@@ -17,7 +17,7 @@ const PageNotFound = () => {
   }, []);
 
   return (
-    <Layout>
+    <Layout title="404">
       <NotFoundSection>
         <Lottie
           animationData={lottie}

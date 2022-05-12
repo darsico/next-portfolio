@@ -5,7 +5,6 @@ import ProjectInfo from "../../components/Project/ProjectInfo.jsx";
 import requestData from "../../lib/request.js";
 import { QUERY_PROJECTS } from "../../src/queries/queryProjects.js";
 
-
 export const getStaticPaths = async () => {
   const { projects } = await requestData(QUERY_PROJECTS);
   const projectsData = projects.edges;
@@ -35,9 +34,10 @@ export const getStaticProps = async (context) => {
 
 const ProjectPage = ({ project }) => {
   const blocks = project.node.blocks;
-
+  const { title, projectCustomFields } = project.node;
+  const { description } = projectCustomFields;
   return (
-    <Layout>
+    <Layout title={title} description={description}>
       <ProjectInfo project={project} />
       <section className="mx-auto w-[80%] sm:w-[70%] md:max-w-2xl md:-mt-5 flex flex-col gap-2 py-20 ">
         {blocks

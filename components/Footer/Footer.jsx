@@ -10,19 +10,21 @@ const Footer = () => {
         <ul className="footer-list">
           <li className="footer-list__item">
             <h5 className="footer-list__title">Escríbeme</h5>
-            <a href="">diegojairhl@gmail.com</a>
+            <a href="mailto:diegojairhl@gmail.com" target="_blank" rel="noreferrer">
+              diegojairhl@gmail.com
+            </a>
           </li>
           <li className="footer-list__item footer-list__item--center">
             <h5 className="footer-list__title">Sígueme</h5>
             <ul className="footer__list-icons">
               <li>
-                <a href="">
+                <a href="https://github.com/darsico" target="_blank" rel="noreferrer">
                   <BsGithub className="icon" alt="Github de Diego" />
                 </a>
               </li>
 
               <li>
-                <a href="">
+                <a href="https://www.linkedin.com/in/diegojairhl/" target="_blank" rel="noreferrer">
                   <BsLinkedin className="icon" alt="LinkedIn de Diego" />
                 </a>
               </li>

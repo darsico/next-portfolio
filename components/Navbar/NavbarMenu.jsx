@@ -1,27 +1,48 @@
-import { useContext, useEffect, useState } from "react";
-import { SiteContext } from "../../context/SiteContext";
+import { useEffect, useState } from "react";
 
 import tw, { styled } from "twin.macro";
 import StandardButton from "../Buttons/StandarButton";
+import Link from "next/link";
 
-const NavbarMenu = ({ open }) => {
+const NavbarMenu = ({ open, setOpen }) => {
   const [mobileScreen, setMobileScreen] = useState();
-  const [data] = useContext(SiteContext);
+
   useEffect(() => {
     const screen = window.innerWidth < 768;
     setMobileScreen(screen);
   }, []);
-  // For menus
-  // const { menus } = data;
+
+  const handleLinkClick = () => {
+    if (screen) {
+      setOpen(false);
+    }
+  };
 
   return (
-    <Nav open={open} mobileScreen={mobileScreen}>
+    <Nav open={open} mobileScreen={mobileScreen} className="">
       <List open={open} mobileScreen={mobileScreen}>
-        <li>
-          <Anchor href="#experience">Experiencia</Anchor>
+        <li className="self-start md:self-center">
+          <a
+            className="text-3xl md:text-base hover:opacity-70 transition-all"
+            onClick={handleLinkClick}
+            href="#experience"
+          >
+            Mi CV
+          </a>
         </li>
-        <li>
-          <StandardButton text="Di hola" />
+        <li className="self-start md:self-center ">
+          <Link href="/#projects">
+            <a className="text-3xl md:text-base hover:opacity-70 transition-all " onClick={handleLinkClick}>
+              Proyectos
+            </a>
+          </Link>
+        </li>
+        <li className="self-start pt-5 md:pt-0 md:self-center">
+          <Link href={"/#contact"} passHref>
+            <a onClick={handleLinkClick} className="transition-all">
+              <StandardButton text="Di hola" />
+            </a>
+          </Link>
         </li>
       </List>
     </Nav>
@@ -30,19 +51,16 @@ const NavbarMenu = ({ open }) => {
 
 const Nav = styled.nav(({ open, mobileScreen }) => [
   open && mobileScreen
-    ? tw`fixed top-0 left-0 h-screen w-screen bg-[#ececec] justify-center items-center  z-30`
+    ? tw`fixed top-0 left-0 h-screen w-screen bg-[#ececec] justify-start items-start  z-30`
     : tw`hidden`,
-  tw`transition-all md:ml-auto md:block`,
+  tw`transition-all md:ml-auto md:block md:justify-center`,
 ]);
 
 const List = styled.ul(({ open, mobileScreen }) => [
   open && mobileScreen
-    ? tw`flex flex-col items-center justify-center h-screen text-center w-screen bg-[#ececec]`
+    ? tw`flex flex-col items-center h-screen w-auto  bg-[#ececec] w-[90%] mx-auto pt-6 mt-20 border-t-[1px] border-black`
     : tw``,
-  tw` flex flex-wrap items-center space-y-5 font-semibold md:space-x-4 md:space-y-0 md:ml-auto`,
+  tw` flex flex-wrap items-center space-y-1 font-semibold md:space-x-4 md:space-y-0 md:ml-auto`,
 ]);
-
-const Anchor = tw.a`text-2xl md:text-base`;
-
 
 export default NavbarMenu;

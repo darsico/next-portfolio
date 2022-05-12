@@ -12,7 +12,7 @@ const Navbar = () => {
     <Header>
       <Nav>
         <Link href="/" passHref>
-          <a>
+          <a className="z-50">
             <Logo>
               Diego Huaman <LogoThin>| Portafolio </LogoThin>
             </Logo>
@@ -49,7 +49,7 @@ mx-auto w-[90%] md:max-w-5xl z-30
 ]);
 
 const Logo = tw.h1`
-   z-50 font-bold
+ font-bold hover:opacity-80 transition-all
 `;
 const LogoThin = tw.span`
 font-normal

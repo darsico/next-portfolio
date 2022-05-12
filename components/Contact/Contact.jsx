@@ -12,7 +12,6 @@ import animConnect from "../../src/lotties/connect-lottie.json";
 import Section from "../Section";
 import Spinner from "../Loaders/Spinner.jsx";
 
-
 const Contact = () => {
   const router = useRouter();
 
@@ -63,7 +62,7 @@ const Contact = () => {
     }
   };
   return (
-    <Section className="section contact ">
+    <Section className="section contact " id="contact">
       <figure className="contact__img ">
         <Lottie animationData={animConnect} autoplay={true} loop={true} />
       </figure>
@@ -180,7 +179,5 @@ const Contact = () => {
     </Section>
   );
 };
-
-
 
 export default Contact;

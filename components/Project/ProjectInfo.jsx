@@ -13,7 +13,7 @@ const ProjectInfo = ({ project }) => {
 
   const iconsSource = getIconsSource(technologyIcons);
   const iconsList = getIconNameAndSource(iconsSource, technologies);
-  console.log(designTags);
+
   const isWebDevCategory = category === "Desarrollo Web" || category === "Web Development";
   return (
     <InfoSection>
@@ -64,7 +64,7 @@ const ProjectInfo = ({ project }) => {
           </li>
         )}
         <li>
-          <h5 className="text-xs uppercase">{demo && isWebDevCategory ? "Demo" : "Link"}</h5>
+          <h5 className="text-xs uppercase">{isWebDevCategory ? "Demo" : "Link"}</h5>
           <a className="text-base font-bold hover:text-gray-600" target="_blank" rel="noreferrer" href={demo}>
             {demo && demo.replace("https://", "")}
           </a>

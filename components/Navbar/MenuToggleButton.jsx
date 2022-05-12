@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 import Hamburger from "../../src/lotties/menu-portfolio.json";
 
 const style = {
-  width: 25,
+  width: 30,
 };
 
 const MenuToggleButton = ({ setOpen, open }) => {
