@@ -7,7 +7,6 @@ import useWindowsSize from "../../hooks/useWindowsSize";
 
 const NavbarMenu = ({ open, setOpen }) => {
   const [mobileScreen, setMobileScreen] = useState();
-
   useEffect(() => {
     const screen = window.innerWidth < 768;
     setMobileScreen(screen);
@@ -29,7 +28,9 @@ const NavbarMenu = ({ open, setOpen }) => {
           <a
             className="text-3xl md:text-base hover:opacity-70 transition-all"
             onClick={handleLinkClick}
-            href="#experience"
+            href="https://awesomebootcamp.000webhostapp.com/wp-content/uploads/2022/05/CV_Diego_Huaman_ES.pdf"
+            target="_blank"
+            rel="noreferrer"
           >
             Mi CV
           </a>
