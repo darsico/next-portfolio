@@ -1,14 +1,13 @@
-import { createContext, useState } from "react";
+import { createContext, useState } from 'react';
 
 const DesignProjectsContext = createContext();
 
 const DesignProjectsProvider = ({ children }) => {
   const [designData, setDesignData] = useState([]);
 
-  const designProjects = designData.filter((item) => {
-    const { categories } = item.node;
-    const category = categories.edges[0].node.name;
-    if (category === "Diseño" || category === "Design") return item.node;
+  const designProjects = designData?.filter((item) => {
+    const { type } = item;
+    if (type === 'Diseño' || type === 'Design') return item;
   });
 
   const designTags = designProjects.reduce((filtered, project) => {

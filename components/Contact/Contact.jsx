@@ -31,7 +31,7 @@ const Contact = () => {
     if (!captcha.current.getValue()) return setValidCaptcha(false);
     setIsLoading(true);
     const config = {
-      method: "post",
+      method: "POST",
       url: `${process.env.NEXT_PUBLIC_API_URL}/api/contact`,
       headers: {
         "Content-Type": "application/json",

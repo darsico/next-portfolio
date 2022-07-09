@@ -1,12 +1,16 @@
-import { useContext, useState } from "react";
-import DesignProjectsContext from "../../context/DesignProjectsContext";
+import { useContext, useState } from 'react';
 
-const DesignTags = ({ setFilteredProjects }) => {
+import { SiteContext } from '../../context/SiteContext';
+
+const DesignTags = () => {
   const [selected, setSelected] = useState({
-    selectedBtn: "designAll",
+    selectedBtn: 'designAll',
   });
-  const designContext = useContext(DesignProjectsContext);
-  const designProjects = designContext.projects;
+  const { designProjects, setFilteredProjects } = useContext(SiteContext);
+
+  const designTags = designProjects && designProjects.map((project) => project.designStack);
+
+  const allDesignTags = designProjects && [].concat(...designTags);
 
   const handleDesignClick = (e) => {
     const selectedTag = e.target.innerText;
@@ -15,10 +19,11 @@ const DesignTags = ({ setFilteredProjects }) => {
       ...selected,
       selectedBtn: currentId,
     });
-    const projectsBeingFiltered = designProjects.filter((item) => {
-      return item.node.projectCustomFields.designTags.includes(selectedTag);
+
+    const projectFiltered = designProjects.filter((project) => {
+      return project.designStack.includes(selectedTag);
     });
-    setFilteredProjects(projectsBeingFiltered);
+    setFilteredProjects(projectFiltered);
   };
 
   const handleAllButtonClick = (e) => {
@@ -32,27 +37,17 @@ const DesignTags = ({ setFilteredProjects }) => {
 
   return (
     <>
-      <button
-        onClick={(e) => handleAllButtonClick(e)}
-        className={`text-base font-light hover:underline  ${selected.selectedBtn === "designAll" ? "underline" : ""}`}
-        id="designAll"
-      >
+      <button onClick={(e) => handleAllButtonClick(e)} className={`text-base font-light hover:underline  ${selected.selectedBtn === 'designAll' ? 'underline' : ''}`} id="designAll">
         Todos
       </button>
-      {designContext.tags.map((designTag, index) => {
-        return (
-          <button
-            key={index}
-            id={index}
-            onClick={(e) => handleDesignClick(e)}
-            className={`active:underline text-base font-light hover:underline ${
-              selected.selectedBtn === index.toString() ? "underline" : ""
-            } `}
-          >
-            {designTag}
-          </button>
-        );
-      })}
+      {designProjects &&
+        allDesignTags?.map((designTag, index) => {
+          return (
+            <button key={index} id={index} onClick={(e) => handleDesignClick(e)} className={`active:underline text-base font-light hover:underline ${selected.selectedBtn === index.toString() ? 'underline' : ''} `}>
+              {designTag}
+            </button>
+          );
+        })}
     </>
   );
 };

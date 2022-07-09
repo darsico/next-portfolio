@@ -1,39 +1,38 @@
-import tw from "twin.macro";
-import Section from "../Section";
-import Link from "next/link";
-import Image from "next/image";
+import tw from 'twin.macro';
+import Section from '../Section';
+import Link from 'next/link';
+import Image from 'next/image';
 
-import TechnologyIcons from "./TechnologyIcons";
-import DesignTags from "./DesignTags";
+import TechnologyIcons from './TechnologyIcons';
+import DesignTags from './DesignTags';
+import { useContext } from 'react';
+import { SiteContext } from '../../context/SiteContext';
+import uId from '../../src/utils/uniqueId';
 
-const Works = ({ filteredProjects }) => {
+const Works = () => {
+  const { filteredProjects } = useContext(SiteContext);
+
   return (
     <WorkGridSection>
       {filteredProjects &&
         filteredProjects.map((project) => {
-          const { databaseId, uri, title, projectCustomFields, categories } = project.node;
-          const { technologyIcons, ctaImage, description, designTags } = projectCustomFields;
+          const { projectImageCta, slug, projectName, technologyIconsCollection, type, designStack, description } = project;
 
-          const category = categories.edges[0].node.name;
-          const projectImage = ctaImage.sourceUrl;
+          const projectImage = projectImageCta.url;
 
           return (
-            <Link href={uri} key={databaseId}>
+            <Link href={`/projects/${slug}`} key={uId()}>
               <a>
                 <article className="">
-                  <figure style={{ position: "relative", width: "100%", paddingBottom: "60%" }}>
+                  <figure style={{ position: 'relative', width: '100%', paddingBottom: '60%' }}>
                     <Image alt="" src={projectImage} layout="fill" objectFit="cover" priority />
                   </figure>
                   <div className="flex flex-col gap-2 py-3 ">
-                    <h5 className="-mb-2 text-sm">{category}</h5>
-                    <h3 className="text-2xl font-semibold leading-6 tracking-tighter cursor-pointer">{title}</h3>
-                    {category === "Desarrollo Web" || category === "Web Development" ? (
-                      <TechnologyIcons technologyIcons={technologyIcons} scaleDown={true} />
-                    ) : (
-                      <DesignTags designTags={designTags} />
-                    )}
+                    <h5 className="-mb-2 text-sm">{type}</h5>
+                    <h3 className="text-2xl font-semibold leading-6 tracking-tighter cursor-pointer">{projectName}</h3>
+                    {type === 'Desarrollo Web' || type === 'Web Development' ? <TechnologyIcons technologyIcons={technologyIconsCollection} scaleDown={true} /> : <DesignTags designTags={designStack} />}
 
-                    <p className="text-base leading-5">{description ? description : ""}</p>
+                    <p className="text-base leading-5">{description}</p>
                   </div>
                 </article>
               </a>

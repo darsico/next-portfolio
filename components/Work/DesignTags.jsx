@@ -1,5 +1,4 @@
 const DesignTags = ({ designTags }) => {
-  // console.log(designTags);
   return (
     <div className="flex text-sm opacity-75 text-gray-700 flex-wrap">
       {designTags.map((designTag, index) => (

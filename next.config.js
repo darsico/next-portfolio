@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["awesomebootcamp.000webhostapp.com", "camo.githubusercontent.com", "raw.githubusercontent.com"],
+    domains: ['awesomebootcamp.000webhostapp.com', 'camo.githubusercontent.com', 'raw.githubusercontent.com', 'images.ctfassets.net'],
   },
 };
 

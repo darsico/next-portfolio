@@ -1,13 +1,19 @@
-import { useContext, useState } from "react";
-import WebDevProjectsContext from "../../context/WebDevProjectContext";
+import { useContext, useState } from 'react';
+import { SiteContext } from '../../context/SiteContext';
+import { countArrayItems } from '../../src/utils/countArrayItems';
 
-const WebDevTags = ({ setFilteredProjects }) => {
+const WebDevTags = () => {
   const [selected, setSelected] = useState({
-    selectedBtn: "devWebAll",
+    selectedBtn: 'devWebAll',
   });
 
-  const webDevContext = useContext(WebDevProjectsContext);
-  const webDevProjects = webDevContext.projects;
+  const { webDevProjects, setFilteredProjects } = useContext(SiteContext);
+
+  const webDevTags = webDevProjects && webDevProjects.map((project) => project.tags);
+
+  const allWebDevTags = webDevProjects && [].concat(...webDevTags);
+
+  const webDevTagCount = countArrayItems(allWebDevTags);
 
   const handleWebDevClick = (e) => {
     const selectedTag = e.target.innerText;
@@ -16,10 +22,10 @@ const WebDevTags = ({ setFilteredProjects }) => {
       ...selected,
       selectedBtn: currentId,
     });
-    const projectsBeingFiltered = webDevProjects.filter((item) => {
-      return item.node.projectCustomFields.technologies.includes(selectedTag);
+    const projectFiltered = webDevProjects.filter((project) => {
+      return project.tags.includes(selectedTag);
     });
-    setFilteredProjects(projectsBeingFiltered);
+    setFilteredProjects(projectFiltered);
   };
 
   const handleAllButtonClick = (e) => {
@@ -32,27 +38,14 @@ const WebDevTags = ({ setFilteredProjects }) => {
   };
   return (
     <>
-      <button
-        id="devWebAll"
-        onClick={(e) => handleAllButtonClick(e)}
-        className={`text-base font-light hover:underline ${selected.selectedBtn === "devWebAll" ? "underline" : ""}`}
-      >
-        Todos
+      <button id="devWebAll" onClick={(e) => handleAllButtonClick(e)} className={`text-base font-light hover:underline ${selected.selectedBtn === 'devWebAll' ? 'underline' : ''}`}>
+        Todas las tecnologías
       </button>
-      {webDevContext.tags &&
-        Object.entries(webDevContext.tags).map(([key, value], index) => {
+      {webDevProjects &&
+        Object.entries(webDevTagCount).map(([key, value], index) => {
           return (
-            <button
-              key={index}
-              id={index}
-              onClick={(e) => handleWebDevClick(e)}
-              className={`active:underline text-xs font-light flex items-start `}
-            >
-              <span
-                className={`text-base hover:underline ${selected.selectedBtn === index.toString() ? "underline" : ""} `}
-              >
-                {key}
-              </span>
+            <button key={index} id={index} onClick={(e) => handleWebDevClick(e)} className={`active:underline text-xs font-light flex items-start `}>
+              <span className={`text-base hover:underline ${selected.selectedBtn === index.toString() ? 'underline' : ''} `}>{key}</span>
               {value}
             </button>
           );
