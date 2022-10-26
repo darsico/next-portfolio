@@ -4,7 +4,7 @@ const MenuToggleButton = ({ setOpen, open }) => {
   };
 
   return (
-    <div class={`menu-btn-1 ${open ? 'active' : ''} z-50 cursor-pointer md:hidden  flex justify-end `} onClick={handleButtonClick}>
+    <div className={`menu-btn-1 ${open ? 'active' : ''} z-50 cursor-pointer md:hidden  flex justify-end `} onClick={handleButtonClick}>
       <span></span>
     </div>
   );
