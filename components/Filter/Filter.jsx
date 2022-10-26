@@ -14,7 +14,7 @@ const Filter = ({ }) => {
     setToggle(index);
   };
 
-  const toggleStyle = (index) => `${toggle === index ? 'opacity-100' : 'opacity-40'} font-bold`;
+  const toggleStyle = (index) => `${toggle === index ? 'opacity-100' : 'opacity-40'} font-bold text-start  self-start inline-block max-w-fit md:w-auto`;
 
   const handleWebDevClick = () => {
     toggleItem(2);
@@ -31,18 +31,11 @@ const Filter = ({ }) => {
 
   return (
     <Section className="flex flex-col md:pb-10 md:pt-0" id="projects">
-      <div className="flex gap-5 md:gap-8 text-lg md:text-2xl ">
-        <button onClick={handleAllClick} className={toggleStyle(1)}>
-          Todos los proyectos
-        </button>
-        <button onClick={handleWebDevClick} className={toggleStyle(2)}>
-          Desarrollo Web
-        </button>
-        <button onClick={handleDesignClick} className={toggleStyle(3)}>
-          Diseño
-        </button>
+      <div className="grid md:flex row-span-3 grid-cols-3 justify-start items-start gap-3 md:gap-8 text-lg md:text-2xl leading-5 break-words  ">
+        <p onClick={handleAllClick} className={toggleStyle(1)}>Todos los proyectos</p>
+        <p onClick={handleWebDevClick} className={toggleStyle(2)}>Desarrollo Web</p>
+        <p onClick={handleDesignClick} className={toggleStyle(3)}>Diseño</p>
       </div>
-
       <ChildFilter toggle={toggle} />
     </Section>
   );
