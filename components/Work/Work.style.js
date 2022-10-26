@@ -12,6 +12,6 @@ export const WorkTitle = tw.h3`text-3xl font-medium md:text-5xl tracking-[-0.05e
 
 export const WorkSubtitle = tw.h4`mt-2 text-base`;
 
-export const WorkDescription = tw.p`mt-2 mb-6 text-xl leading-5 md:text-3xl tracking-[-0.05em] max-w-[90%] md:max-w-lg`;
+export const WorkDescription = tw.p`mt-2 mb-6 text-xl leading-5 md:text-2xl tracking-[-0.05em] max-w-[90%] md:max-w-lg md:leading-[1.8rem] opacity-90`;
 
 export const WorkCTA = tw.a`underline hover:font-medium`;

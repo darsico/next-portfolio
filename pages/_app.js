@@ -5,6 +5,7 @@ import getDataQuery from '../lib/request';
 import Head from 'next/head';
 import { QUERY_PROJECTS } from '../src/queries/queryProjects';
 import { DataContext } from '../context/DataContext';
+
 function App({ Component, pageProps, data }) {
   const [siteData, setSiteData] = useState(data);
   return (
@@ -24,7 +25,7 @@ function App({ Component, pageProps, data }) {
 
 App.getInitialProps = async function () {
   const response = await getDataQuery(QUERY_PROJECTS);
-  const projectsData = response.projectCollection.items;
+  const projectsData = response?.projectCollection.items;
 
   return {
     data: projectsData,

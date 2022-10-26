@@ -5,7 +5,7 @@ import { SiteContext } from '../../context/SiteContext';
 import Section from '../Section';
 import ChildFilter from './ChildFilter';
 
-const Filter = ({}) => {
+const Filter = ({ }) => {
   const [toggle, setToggle] = useState(1);
 
   const { webDevProjects, setFilteredProjects, projects, designProjects } = useContext(SiteContext);
@@ -31,7 +31,7 @@ const Filter = ({}) => {
 
   return (
     <Section className="flex flex-col md:pb-10 md:pt-0" id="projects">
-      <div className="flex gap-3 text-xl">
+      <div className="flex gap-5 md:gap-8 text-lg md:text-2xl ">
         <button onClick={handleAllClick} className={toggleStyle(1)}>
           Todos los proyectos
         </button>

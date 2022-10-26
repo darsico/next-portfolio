@@ -11,8 +11,8 @@ const appReducer = (state, action) => {
       };
 
     case 'FILTER_WEB_DEV_PROJECTS':
-      const webDevFiltered = payload.filter((webDevProject) => webDevProject.type === 'Desarrollo Web');
-      const webDevWithTags = webDevFiltered.map((project) => ({ ...project, tags: project.technologyIconsCollection.items.map((icon) => cleanAndCapitalize(icon.title)) }));
+      const webDevFiltered = payload?.filter((webDevProject) => webDevProject.type === 'Desarrollo Web');
+      const webDevWithTags = webDevFiltered?.map((project) => ({ ...project, tags: project.technologyIconsCollection.items.map((icon) => cleanAndCapitalize(icon.title)) }));
       return {
         ...state,
         webDevProjects: webDevWithTags,
@@ -21,7 +21,7 @@ const appReducer = (state, action) => {
     case 'FILTER_DESIGN_PROJECTS':
       return {
         ...state,
-        designProjects: payload.filter((designProject) => designProject.type === 'Diseño'),
+        designProjects: payload?.filter((designProject) => designProject.type === 'Diseño'),
       };
 
     default:

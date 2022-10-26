@@ -165,11 +165,10 @@ const Contact = () => {
           </div>
           <button
             className={`btn border-2 
-           w-fit mx-auto py-1 px-4 rounded-3xl  ${
-             verified
-               ? "hover:bg-gray-200 hover:shadow-xl   focus:shadow-xl  focus:bg-gray-200 border-black"
-               : "text-gray-400 border-gray-400"
-           }`}
+           w-fit mx-auto py-1 px-4 rounded-3xl  ${verified
+                ? "hover:bg-gray-200 hover:shadow-xl   focus:shadow-xl  focus:bg-gray-200 border-black"
+                : "text-gray-400 border-gray-400"
+              }`}
             type="submit"
           >
             Enviar
