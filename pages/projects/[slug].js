@@ -25,12 +25,13 @@ export const getStaticProps = async (context) => {
     props: {
       project,
     },
-    revalidate: 1,
+    revalidate: 30,
   };
 };
 
 const ProjectPage = ({ project }) => {
   // const blocks = project.node.blocks;
+  console.log(project.projectOverview.json.content)
   const { title, description } = project || {};
 
   return (

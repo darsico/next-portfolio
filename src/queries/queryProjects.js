@@ -20,6 +20,9 @@ export const QUERY_PROJECTS = gql`
           url(transform: { format: WEBP })
         }
         projectName
+        projectOverview {
+          json
+        }
         date
         description
         demoLink

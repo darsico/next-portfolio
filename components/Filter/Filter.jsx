@@ -14,7 +14,7 @@ const Filter = ({ }) => {
     setToggle(index);
   };
 
-  const toggleStyle = (index) => `${toggle === index ? 'opacity-100' : 'opacity-40'} font-bold text-start  self-start inline-block max-w-fit md:w-auto`;
+  const toggleStyle = (index) => `${toggle === index ? 'opacity-100' : 'opacity-40'} font-bold text-start  self-start inline-block max-w-fit md:w-auto hover:cursor-pointer`;
 
   const handleWebDevClick = () => {
     toggleItem(2);
