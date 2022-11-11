@@ -31,7 +31,7 @@ export const getStaticProps = async (context) => {
 
 const ProjectPage = ({ project }) => {
   // const blocks = project.node.blocks;
-  console.log(project.projectOverview.json.content)
+  //console.log(project.projectOverview.json.content)
   const { title, description } = project || {};
 
   return (
