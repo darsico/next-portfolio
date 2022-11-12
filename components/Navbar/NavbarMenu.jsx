@@ -40,7 +40,7 @@ const NavbarMenu = ({ open, setOpen }) => {
           </select>
         </li>
         <li className="self-start md:self-center">
-          <a className="text-3xl md:text-base hover:opacity-70 transition-all" onClick={handleLinkClick} href="https://drive.google.com/file/d/1tZN3FFdh8U9OA0oKaaAH8GG1G8sLAXeq/view?usp=sharing" target="_blank" rel="noreferrer">
+          <a className="text-3xl md:text-base hover:opacity-70 transition-all" onClick={handleLinkClick} href={dictionary.resumeLink} target="_blank" rel="noreferrer">
             {dictionary.resume}
           </a>
         </li>

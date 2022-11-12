@@ -1,9 +1,6 @@
 import { useContext, useEffect } from 'react';
-// import Hero from '../components/Hero';
 import Layout from '../components/Layout';
-// import LatestWork from '../components/Work/LatestWork';
 import Works from '../components/Work/Works';
-// import Connect from '../components/Connect/Connect.jsx';
 import Contact from '../components/Contact/Contact';
 
 import { SiteContext } from '../context/SiteContext';

@@ -1,5 +1,6 @@
+import dynamic from 'next/dynamic.js';
 import Layout from '../../components/Layout.jsx';
-import ProjectInfo from '../../components/Project/ProjectInfo.jsx';
+// import ProjectInfo from '../../components/Project/ProjectInfo.jsx';
 import getDataQuery from '../../lib/request.js';
 import { QUERY_PROJECTS } from '../../src/queries/queryProjects.js';
 
@@ -33,7 +34,9 @@ const ProjectPage = ({ project }) => {
   // const blocks = project.node.blocks;
   //console.log(project.projectOverview.json.content)
   const { title, description } = project || {};
-
+  const ProjectInfo = dynamic(() => import('../../components/Project/ProjectInfo.jsx'), {
+    ssr: false,
+  });
   return (
     <Layout title={title} description={description}>
       <ProjectInfo project={project} />
