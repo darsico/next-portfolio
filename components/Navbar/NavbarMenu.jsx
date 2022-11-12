@@ -1,6 +1,4 @@
 import { useEffect, useState } from 'react';
-
-import tw, { styled } from 'twin.macro';
 import StandardButton from '../Buttons/StandarButton';
 import Link from 'next/link';
 import useWindowsSize from '../../hooks/useWindowsSize';
@@ -37,7 +35,7 @@ const NavbarMenu = ({ open, setOpen }) => {
           </Link>
         </li>
         <li className="self-start pt-5 md:pt-0 md:self-center">
-          <Link href={'/#contact'} passHref>
+          <Link href={'/#form'} passHref>
             <a onClick={handleLinkClick} className="transition-all">
               <StandardButton text="Di hola" />
             </a>
@@ -48,8 +46,12 @@ const NavbarMenu = ({ open, setOpen }) => {
   );
 };
 
-const Nav = styled.nav(({ open, mobileScreen }) => [open && mobileScreen ? tw`fixed top-0 left-0 h-screen w-screen bg-[#ececec] justify-start items-start z-30` : tw`hidden`, tw`transition-all md:ml-auto md:block md:justify-center`]);
+const Nav = ({ children, open, mobileScreen }) => {
+  return <nav className={`${open && mobileScreen ? "fixed top-0 left-0 h-screen w-screen bg-[#ececec] justify-start items-start z-30" : "hidden"} transition-all md:ml-auto md:block md:justify-center`}>{children}</nav>
+}
 
-const List = styled.ul(({ open, mobileScreen }) => [open && mobileScreen ? tw`flex flex-col items-center h-screen w-auto  bg-[#ececec] w-[90%] mx-auto pt-6 mt-20 border-t-[1px] border-black` : tw``, tw` flex flex-wrap items-center space-y-1 font-semibold md:space-x-4 md:space-y-0 md:ml-auto`]);
+const List = ({ children, open, mobileScreen }) => {
+  return <ul className={`${open && mobileScreen ? "flex flex-col items-center h-screen bg-[#ececec] w-[90%] mx-auto pt-6 mt-20 border-t-[1px] border-black" : ""}  flex flex-wrap items-center space-y-1 font-semibold md:space-x-4 md:space-y-0 md:ml-auto `}> {children}</ul>
+}
 
 export default NavbarMenu;

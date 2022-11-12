@@ -1,9 +1,9 @@
-
 export const WorkImage = ({ children }) => <figure className="object-cover w-full h-60 hover:scale-150">{children}</figure>
 
 export const WorkSecondImage = ({ children }) => <figure className="hidden -mt-40 md:inline w-36 justify-self-center">{children}</figure>
 
 export const WorkArticle = ({ children }) => <article className="grid grid-cols-3 gap-4">{children}</article>
+
 export const WorkContent = ({ children }) => <div className="col-span-3 sm:col-span-2">{children}</div>
 
 export const WorkTitle = ({ customClass, children }) => <h3 className={`${customClass} text-3xl font-medium md:text-5xl tracking-[-0.05em] cursor-pointer `}>{children}</h3 >

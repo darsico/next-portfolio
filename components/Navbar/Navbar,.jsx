@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { useState } from "react";
-import tw, { styled } from "twin.macro";
 
 import MenuToggleButton from "./MenuToggleButton";
 import NavbarMenu from "./NavbarMenu";
@@ -25,34 +24,22 @@ const Navbar = () => {
   );
 };
 
-const Header = styled.header(() => [
-  `
-  background: linear-gradient(180deg, #ECECEC 0%, rgba(236, 236, 236, 0) 100%);
-    position: fixed;
-  top: 0;
-  left:0;
-  `,
-  tw`w-full z-30`,
-]);
+const Header = ({ children }) => {
+  return (<header className="w-full z-30" style={{
+    background: "linear-gradient(180deg, #ECECEC 0%, rgba(236, 236, 236, 0) 100%)", position: "fixed", top: 0,
+    left: 0
+  }}>{children}</header>)
+}
 
-const Nav = styled.section(() => [
-  `
-  display:flex;
-  justify-content:space-between;
- `,
-  tw`
- flex py-5 text-sm md:text-base
-items-center 
-justify-between  
-mx-auto w-[90%] md:max-w-5xl z-30  
-`,
-]);
+const Nav = ({ children }) => {
+  return (<section className=" flex py-5 text-sm md:text-base
+  items-center 
+  justify-between  
+  mx-auto w-[90%] md:max-w-5xl z-30 ">{children}</section>)
+}
+const Logo = ({ children }) => <h1 className=" font-bold hover:opacity-80 transition-all
+">{children}</h1>
 
-const Logo = tw.h1`
- font-bold hover:opacity-80 transition-all
-`;
-const LogoThin = tw.span`
-font-normal
-`;
+const LogoThin = ({ children }) => <span className="font-normal">{children}</span>
 
 export default Navbar;

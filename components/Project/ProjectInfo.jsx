@@ -76,13 +76,11 @@ const ProjectInfo = ({ project }) => {
   );
 };
 
-const InfoSection = tw(Section)`
- border-t-[1px] border-b-[1px] border-black pt-6 pb-3 grid grid-cols-3 gap-x-10 gap-y-3 md:gap-y-4 md:gap-x-4 md:grid-cols-6 grid-rows-[fit-content_1fr]  lg:grid-cols-8 lg:grid-rows-1 lg:pb-20 
-`;
+const InfoSection = ({ children }) => {
+  return <Section customClass={" border-t-[1px] border-b-[1px] border-black pt-6 pb-3 grid grid-cols-3 gap-x-10 gap-y-3 md:gap-y-4 md:gap-x-4 md:grid-cols-6 grid-rows-[fit-content_1fr]  lg:grid-cols-8 lg:grid-rows-1 lg:pb-20 "}>{children}</Section>
+}
 
-const InfoTitle = tw.h1`
-text-center col-span-3 row-start-1 row-end-2 text-3xl font-semibold leading-6 tracking-tighter md:grid-cols-6 h-[fit-content] lg:col-start-3 lg:col-end-7 lg:justify-self-center lg:self-start lg:text-4xl mb-4 md:mb-0
-
-`;
+const InfoTitle = ({ children }) => <h1 className='text-center col-span-3 row-start-1 row-end-2 text-3xl font-semibold leading-6 tracking-tighter md:grid-cols-6 h-[fit-content] lg:col-start-3 lg:col-end-7 lg:justify-self-center lg:self-start lg:text-4xl mb-4 md:mb-0
+'>{children}</h1>
 
 export default ProjectInfo;

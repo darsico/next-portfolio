@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useContext } from 'react';
-import tw from 'twin.macro';
 import { SiteContext } from '../../context/SiteContext';
 import { getIconsSource } from '../../src/utils/Works/getIconsSource';
 import Section from '../Section';
@@ -68,17 +67,15 @@ const LatestWork = () => {
   );
 };
 
-const LatestWorkTitle = tw(WorkTitle)`
-mb-2 md:mb-4 w-[80%]
-`;
-const WorkSectionTitle = tw.h3`text-xl font-bold mb-5 md:text-3xl `;
+const LatestWorkTitle = ({ children }) => <WorkTitle customClass={"mb-2 md:mb-4 w-[80%]"}>{children}</WorkTitle>
 
-const WorkSection = tw(Section)`
- flex flex-col items-center pt-20 md:pt-14
-`;
+const WorkSectionTitle = ({ children }) => <h3 className='text-xl font-bold mb-5 md:text-3xl '>{children}</h3>
 
-const WorkImageContainer = tw.figure`
-w-full cursor-pointer
-`;
+const WorkSection = ({ children }) => {
+  return <Section customClass={"flex flex-col items-center pt-20 md:pt-14"}>{children}</Section>
+}
+
+const WorkImageContainer = ({ children }) => <figure className='w-full cursor-pointer'>{children}</figure>
+
 
 export default LatestWork;

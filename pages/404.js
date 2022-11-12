@@ -43,7 +43,7 @@ const PageNotFound = () => {
   );
 };
 
-const NotFoundSection = tw(Section)`
-grid grid-cols-1 md:grid-cols-2 pt-0
-`;
+const NotFoundSection = ({ children }) => {
+  return <Section customClass={"grid grid-cols-1 md:grid-cols-2 pt-0"}>{children}</Section>
+}
 export default PageNotFound;

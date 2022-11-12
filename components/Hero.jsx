@@ -1,6 +1,5 @@
 import Lottie from "lottie-react";
 import { useEffect, useRef } from "react";
-import tw from "twin.macro";
 import heroScrollDown from "../src/lotties/scroll-down.json";
 
 const scrollDownStyle = {
@@ -33,14 +32,11 @@ const Hero = () => {
   );
 };
 
-const HeroSection = tw.section`
- h-[50vh] md:h-[70vh] flex flex-col relative justify-center  mx-auto w-[90%] md:max-w-5xl -mt-32
-`;
+const HeroSection = ({ children }) => <section className=" h-[50vh] md:h-[70vh] flex flex-col relative justify-center  mx-auto w-[90%] md:max-w-5xl -mt-32">{children}</section>
 
-const HeroText = tw.h2`text-xl md:text-2xl tracking-[-0.05em] `;
+const HeroText = ({ children }) => <h2 className="text-xl md:text-2xl tracking-[-0.05em]">{children}</h2>
+const HeroCTA = ({ children }) => <p className="text-3xl mt-3 sm:text-4xl md:text-6xl font-semibold leading-7 md:leading-[0.9] md:w-10/12 w-3/4 tracking-[-0.05em]">{children}</p>
 
-const HeroCTA = tw.p`text-3xl mt-3 sm:text-4xl md:text-6xl font-semibold leading-7 md:leading-[0.9] md:w-10/12 w-3/4 tracking-[-0.05em] `;
-
-const HeroArrow = tw.span` text-[10px]`;
+const HeroArrow = ({ children }) => <span className="text-[10px]">{children}</span>
 
 export default Hero;

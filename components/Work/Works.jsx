@@ -1,5 +1,3 @@
-import tw from 'twin.macro';
-import Section from '../Section';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -43,6 +41,8 @@ const Works = () => {
   );
 };
 
-const WorkGridSection = tw(Section)`pt-0 grid col-span-1 gap-10 sm:grid-cols-2 md:grid-cols-3 md:gap-5`;
+const WorkGridSection = ({ children }) => {
+  return <section className="pt-0 grid col-span-1 gap-10 sm:grid-cols-2 md:grid-cols-3 md:gap-5 mx-auto w-[90%] md:max-w-5xl py-8 md:pt-10 md:pb-20 ">{children}</section>
+}
 
 export default Works;
