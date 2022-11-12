@@ -5,7 +5,6 @@ import lottie from "../src/lotties/404.json";
 import Layout from "../components/Layout.jsx";
 import StandardButton from "../components/Buttons/StandarButton";
 import Link from "next/link";
-import tw from "twin.macro";
 
 const PageNotFound = () => {
   const lottieRef = useRef();
@@ -43,7 +42,7 @@ const PageNotFound = () => {
   );
 };
 
-const NotFoundSection = tw(Section)`
-grid grid-cols-1 md:grid-cols-2 pt-0
-`;
+const NotFoundSection = ({ children }) => {
+  return <Section customClass={"grid grid-cols-1 md:grid-cols-2 pt-0"}>{children}</Section>
+}
 export default PageNotFound;

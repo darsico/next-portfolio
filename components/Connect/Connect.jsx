@@ -1,5 +1,4 @@
 import Lottie from "lottie-react";
-import tw from "twin.macro";
 import Section from "../Section";
 import arrowDown from "../../src/lotties/icon-arrow-down.json";
 import { useEffect, useRef } from "react";
@@ -25,16 +24,11 @@ const Connect = () => {
   );
 };
 
-const ConnectSection = tw(Section)`
-flex flex-col items-center justify-center  h-[fit-content] py-20
-`;
+const ConnectSection = ({ children }) => <Section customClass="flex flex-col items-center justify-center  h-[fit-content] py-20">{children}</Section>
 
-const ConnectText = tw.h2`
-text-3xl font-bold md:text-5xl tracking-[-0.05em]
-`;
 
-const ConnectTextThin = tw.p`
- text-3xl font-light md:text-5xl tracking-[-0.05em]
-`;
+const ConnectText = ({ children }) => <h2 className="text-3xl font-bold md:text-5xl tracking-[-0.05em]">{children}</h2>
+
+const ConnectTextThin = ({ children }) => <p className=" text-3xl font-light md:text-5xl tracking-[-0.05em]">{children}</p>
 
 export default Connect;

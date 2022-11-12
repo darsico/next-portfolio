@@ -5,7 +5,6 @@ import Link from "next/link";
 
 import { useRef } from "react";
 import Section from "../components/Section";
-import tw from "twin.macro";
 
 const ThankYouPage = () => {
   const style = {
@@ -40,8 +39,8 @@ const ThankYouPage = () => {
   );
 };
 
-const ThankYouSection = tw(Section)`
-grid grid-cols-1 md:grid-cols-2 pt-0 
-`;
+const ThankYouSection = ({ children }) => {
+  return <Section customClass={"grid grid-cols-1 md:grid-cols-2 pt-0"}>{children}</Section>
+}
 
 export default ThankYouPage;

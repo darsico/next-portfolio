@@ -1,6 +1,5 @@
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { FaHeart } from "react-icons/fa";
-import tw from "twin.macro";
 import Section from "../Section";
 
 const Footer = () => {
@@ -56,8 +55,6 @@ const Footer = () => {
   );
 };
 
-const FooterSection = tw(Section)`
-py-0 md:py-0 
-`;
+const FooterSection = ({ children }) => <Section customClass="py-0 md:py-0 ">{children}</Section>
 
 export default Footer;

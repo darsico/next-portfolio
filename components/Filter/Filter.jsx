@@ -30,14 +30,14 @@ const Filter = ({ }) => {
   };
 
   return (
-    <Section className="flex flex-col md:pb-10 md:pt-0" id="projects">
+    <section className="flex flex-col mx-auto w-[90%] md:max-w-5xl py-8 md:pb-0 md:pt-20 " id="projects" >
       <div className="grid md:flex row-span-3 grid-cols-3 justify-start items-start gap-3 md:gap-8 text-lg md:text-2xl leading-5 break-words  ">
         <p onClick={handleAllClick} className={toggleStyle(1)}>Todos los proyectos</p>
         <p onClick={handleWebDevClick} className={toggleStyle(2)}>Desarrollo Web</p>
         <p onClick={handleDesignClick} className={toggleStyle(3)}>Diseño</p>
       </div>
       <ChildFilter toggle={toggle} />
-    </Section>
+    </section >
   );
 };
 

@@ -14,7 +14,7 @@ import { DataContext } from '../context/DataContext';
 export default function Home() {
   const [siteData] = useContext(DataContext);
   const { getProjects, getDesignProjects, getWebDevProjects } = useContext(SiteContext);
-  useLayoutEffect(() => {
+  useEffect(() => {
     getProjects(siteData);
     getWebDevProjects(siteData);
     getDesignProjects(siteData);
