@@ -1,5 +1,6 @@
 import Lottie from "lottie-react";
-import { useEffect, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
+import { LanguageContext } from "../context/LanguageContext";
 import heroScrollDown from "../src/lotties/scroll-down.json";
 
 const scrollDownStyle = {
@@ -11,6 +12,8 @@ const scrollDownStyle = {
 };
 
 const Hero = () => {
+  const { dictionary } = useContext(LanguageContext);
+
   const lottieRef = useRef();
 
   useEffect(() => {
@@ -19,8 +22,8 @@ const Hero = () => {
 
   return (
     <HeroSection id="hero">
-      <HeroText>Hola! Soy Diego Huaman,</HeroText>
-      <HeroCTA>Puedo crear aplicaciones web fascinantes.</HeroCTA>
+      <HeroText>{dictionary.heroCTAText}</HeroText>
+      <HeroCTA>{dictionary.heroCTA}</HeroCTA>
       <Lottie
         lottieRef={lottieRef}
         animationData={heroScrollDown}

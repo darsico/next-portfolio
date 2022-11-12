@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
 
 import ReCAPTCHA from "react-google-recaptcha";
@@ -11,6 +11,8 @@ import animConnect from "../../src/lotties/connect-lottie.json";
 
 import Section from "../Section";
 import Spinner from "../Loaders/Spinner.jsx";
+import useShowRender from "../../hooks/useShowRender";
+import { LanguageContext } from "../../context/LanguageContext";
 
 const Contact = () => {
   const router = useRouter();
@@ -20,6 +22,11 @@ const Contact = () => {
   const [verified, setVerified] = useState(false);
   const [validCaptcha, setValidCaptcha] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+
+  const { dictionary } = useContext(LanguageContext)
+  const { formText, formEmail, formMessage, formName, formSend } = dictionary
+
+  const showRender = useShowRender()
   const {
     register,
     handleSubmit,
@@ -61,9 +68,12 @@ const Contact = () => {
       setValidCaptcha(true);
     }
   };
+
+  if (!showRender) return null
+
   return (
     <Section customClass="grid grid-cols-1 md:grid-cols-2" >
-      <figure className="flex flex-col items-center justify-center p-5 " >
+      <figure className="contact__img ">
         <Lottie animationData={animConnect} autoplay={true} loop={true} />
       </figure>
       {isLoading ? (
@@ -75,14 +85,14 @@ const Contact = () => {
         </div>
       ) : (
         <form action="/" className="form" id="form" onSubmit={handleSubmit(onSubmitForm)}>
-          <h3 className="form__title">Póngase en contacto para nuevas oportunidades o solo para saludar :)</h3>
+          <h3 className="form__title">{formText}</h3>
           <div className="form__input-list">
             <label htmlFor="name" className="sr-only">
-              Nombre Completo
+              {formName}
             </label>
             <input
               className={`form__input ${errors.name ? "border-red-400" : "border-[#424242]"}`}
-              placeholder="Nombre completo"
+              placeholder={formName}
               {...register("name", {
                 required: {
                   value: true,
@@ -100,11 +110,11 @@ const Contact = () => {
             />
 
             <label htmlFor="email" className="sr-only">
-              Email
+              {formEmail}
             </label>
             <input
               className={`form__input ${errors.email ? "border-red-400" : "border-[#424242]"}`}
-              placeholder="Email"
+              placeholder={formEmail}
               {...register("email", {
                 required: {
                   value: true,
@@ -130,11 +140,11 @@ const Contact = () => {
             />
 
             <label htmlFor="message" className="sr-only">
-              Message
+              {formMessage}
             </label>
             <textarea
               className={`form__input form__input--message  ${errors.message ? "border-red-400" : "border-[#424242]"}`}
-              placeholder="Escribe el mensaje aquí."
+              placeholder={formMessage}
               {...register("message", {
                 required: {
                   value: true,
@@ -171,7 +181,7 @@ const Contact = () => {
               }`}
             type="submit"
           >
-            Enviar
+            {formSend}
           </button>
         </form>
       )}

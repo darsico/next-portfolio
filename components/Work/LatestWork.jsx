@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useContext } from 'react';
+import { LanguageContext } from '../../context/LanguageContext';
 import { SiteContext } from '../../context/SiteContext';
 import { getIconsSource } from '../../src/utils/Works/getIconsSource';
 import Section from '../Section';
@@ -10,8 +11,9 @@ import { WorkArticle, WorkContent, WorkCTA, WorkDescription, WorkImage, WorkSeco
 
 const LatestWork = () => {
   const { projects } = useContext(SiteContext);
+  const { dictionary, checkLang } = useContext(LanguageContext);
 
-  const { type, technologyIconsCollection, projectName, description, projectImageCta, slug } = projects[0] || {};
+  const { enType, type, technologyIconsCollection, projectName, enProjectName, description, enDescription, projectImageCta, slug } = projects[0] || {};
   const uri = `/projects/${slug}`;
   const latestWorkImage = projectImageCta?.url;
 
@@ -33,28 +35,34 @@ const LatestWork = () => {
   return (
     <>
       <WorkSection id="work">
-        <WorkSectionTitle>Mi último trabajo</WorkSectionTitle>
+        <WorkSectionTitle>{dictionary.latestWork}</WorkSectionTitle>
         <Link href={uri} passHref>
-          <WorkImageContainer>
+          <a className='w-full cursor-pointer'>
             <figure className="relative w-full pb-[50%] md:pb-[30%]">{projects.length > 0 && <Image alt="" src={latestWorkImage} layout="fill" objectFit="cover" placeholder="blur" blurDataURL={`data:image/svg+xml;base64,${toBase64(convertImage(700, 475))}`} />}</figure>
-          </WorkImageContainer>
+          </a>
         </Link>
         <WorkArticle>
           <WorkContent>
-            <WorkSubtitle>{type}</WorkSubtitle>
+            <WorkSubtitle>{checkLang(type, enType)}</WorkSubtitle>
             <Link href={uri} passHref>
-              <LatestWorkTitle>
-                {projectName}
-                <span> →</span>
-              </LatestWorkTitle>
+              <a>
+                <p className=' text-3xl font-medium md:text-5xl tracking-[-0.05em] cursor-pointer mb-2 md:mb-4 w-[80%] md:pb-4'>
+                  {checkLang(projectName, enProjectName)}
+                  <span> →</span>
+                </p>
+              </a>
             </Link>
             {
               type === 'Desarrollo Web' || type === 'Web Development' ? <TechnologyIcons technologyIcons={technologyIconsCollection} /> : null
               // <DesignTags designTags={designTags} />
             }
-            <WorkDescription>{description}</WorkDescription>
             <Link href={uri} passHref>
-              <WorkCTA>Ver proyecto</WorkCTA>
+              <a>
+                <WorkDescription>{checkLang(description, enDescription)}</WorkDescription>
+              </a>
+            </Link>
+            <Link href={uri} passHref>
+              <a className='underline hover:font-medium'>{dictionary.seeProject}</a>
             </Link>
           </WorkContent>
           {/* <WorkSecondImage
@@ -67,7 +75,6 @@ const LatestWork = () => {
   );
 };
 
-const LatestWorkTitle = ({ children }) => <WorkTitle customClass={"mb-2 md:mb-4 w-[80%]"}>{children}</WorkTitle>
 
 const WorkSectionTitle = ({ children }) => <h3 className='text-xl font-bold mb-5 md:text-3xl '>{children}</h3>
 
@@ -75,7 +82,7 @@ const WorkSection = ({ children }) => {
   return <Section customClass={"flex flex-col items-center pt-20 md:pt-14"}>{children}</Section>
 }
 
-const WorkImageContainer = ({ children }) => <figure className='w-full cursor-pointer'>{children}</figure>
+// const WorkImageContainer = ({ children }) => 
 
 
 export default LatestWork;

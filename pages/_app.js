@@ -5,6 +5,7 @@ import getDataQuery from '../lib/request';
 import Head from 'next/head';
 import { QUERY_PROJECTS } from '../src/queries/queryProjects';
 import { DataContext } from '../context/DataContext';
+import { LanguageProvider } from '../context/LanguageContext';
 
 function App({ Component, pageProps, data }) {
   const [siteData, setSiteData] = useState(data);
@@ -16,7 +17,9 @@ function App({ Component, pageProps, data }) {
       </Head>
       <DataContext.Provider value={[siteData, setSiteData]}>
         <SiteProvider>
-          <Component {...pageProps} />
+          <LanguageProvider>
+            <Component {...pageProps} />
+          </LanguageProvider>
         </SiteProvider>
       </DataContext.Provider>
     </>

@@ -7,10 +7,12 @@ import Section from '../Section';
 import { useContext, useEffect } from 'react';
 import { SiteContext } from '../../context/SiteContext';
 import { cleanAndCapitalize } from '../../src/utils/cleanAndCapitalize';
+import { LanguageContext } from '../../context/LanguageContext';
 
 const ProjectInfo = ({ project }) => {
-  const { designStack, date, demoLink, projectName, technologyIconsCollection, type, repositoryLink } = project;
+  const { designStack, date, demoLink, enProjectName, projectName, technologyIconsCollection, enType, type, repositoryLink } = project;
   const { items } = technologyIconsCollection;
+  const { dictionary, checkLang } = useContext(LanguageContext)
 
   const technologiesNames = items.map((icon) => cleanAndCapitalize(icon.title));
 
@@ -21,10 +23,10 @@ const ProjectInfo = ({ project }) => {
 
   return (
     <InfoSection>
-      <InfoTitle>{projectName}</InfoTitle>
+      <InfoTitle>{checkLang(projectName, enProjectName)}</InfoTitle>
       <div className="flex flex-col justify-between row-start-2 row-end-3 space-y-10 lg:col-start-8 lg:col-end-9 lg:row-start-1">
         <ul>
-          {isWebDevCategory && <li className="mb-2 text-xs leading-tight uppercase">Tecnologías usadas</li>}
+          {isWebDevCategory && <li className="mb-2 text-xs leading-tight uppercase">{dictionary.stack}</li>}
           <li>
             {<p className="text-sm">{designStack && designStack.join(', ')}</p>}
             {iconsList && (
@@ -48,16 +50,16 @@ const ProjectInfo = ({ project }) => {
             )}
           </li>
         </ul>
-        <h4 className="text-sm text-gray-600 md:text-base">{type}</h4>
+        <h4 className="text-sm text-gray-600 md:text-base">{checkLang(type, enType)}</h4>
       </div>
       <ul className="flex flex-col justify-between h-full col-span-2 row-start-2 row-end-3 space-y-5 md:grid-cols-5 lg:col-start-1 lg:col-end-3 lg:row-start-1 ">
         <li>
-          <h5 className="text-xs uppercase">Date</h5>
+          <h5 className="text-xs uppercase">{dictionary.date}</h5>
           <p className="text-sm">{dateFormatter(date)}</p>
         </li>
         {isWebDevCategory && (
           <li>
-            <h5 className="text-xs uppercase ">Repositorio</h5>
+            <h5 className="text-xs uppercase ">{dictionary.repo}</h5>
             <a href={repositoryLink} target="_blank" rel="noreferrer">
               <BsGithub className="mt-2 -ml-1 scale-125 icon" alt="Github de Diego" />
             </a>
