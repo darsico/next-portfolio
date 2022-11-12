@@ -1,13 +1,16 @@
 import Lottie from "lottie-react";
 import Section from "../Section";
 import arrowDown from "../../src/lotties/icon-arrow-down.json";
-import { useEffect, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
+import { LanguageContext } from "../../context/LanguageContext";
+import useShowRender from "../../hooks/useShowRender";
 
 const arrowDownStyle = {
   width: 100,
 };
 
 const Connect = () => {
+  const { dictionary } = useContext(LanguageContext)
   const lottieRef = useRef();
 
   useEffect(() => {
@@ -16,8 +19,8 @@ const Connect = () => {
 
   return (
     <ConnectSection>
-      <ConnectText>Conectemos!</ConnectText>
-      <ConnectTextThin>Me gustaría escuchar de ti</ConnectTextThin>
+      <ConnectText>{dictionary.connectCTA}</ConnectText>
+      <ConnectTextThin>{dictionary.connectText}</ConnectTextThin>
       {/* Lottie down */}
       <Lottie animationData={arrowDown} autoplay={true} loop={true} style={arrowDownStyle} lottieRef={lottieRef} />
     </ConnectSection>

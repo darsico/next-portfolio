@@ -1,4 +1,5 @@
 import { useContext, useState } from 'react';
+import { LanguageContext } from '../../context/LanguageContext';
 
 import { SiteContext } from '../../context/SiteContext';
 
@@ -7,6 +8,7 @@ const DesignTags = () => {
     selectedBtn: 'designAll',
   });
   const { designProjects, setFilteredProjects } = useContext(SiteContext);
+  const { dictionary } = useContext(LanguageContext)
 
   const designTags = designProjects && designProjects.map((project) => project.designStack);
 
@@ -38,7 +40,7 @@ const DesignTags = () => {
   return (
     <>
       <button onClick={(e) => handleAllButtonClick(e)} className={`text-base font-light hover:underline  ${selected.selectedBtn === 'designAll' ? 'underline' : ''}`} id="designAll">
-        Todos
+        {dictionary.all}
       </button>
       {designProjects &&
         allDesignTags?.map((designTag, index) => {

@@ -1,4 +1,5 @@
 import { useContext, useState } from 'react';
+import { LanguageContext } from '../../context/LanguageContext';
 import { SiteContext } from '../../context/SiteContext';
 import { countArrayItems } from '../../src/utils/countArrayItems';
 
@@ -8,6 +9,7 @@ const WebDevTags = () => {
   });
 
   const { webDevProjects, setFilteredProjects } = useContext(SiteContext);
+  const { dictionary } = useContext(LanguageContext)
 
   const webDevTags = webDevProjects && webDevProjects.map((project) => project.tags);
 
@@ -39,7 +41,7 @@ const WebDevTags = () => {
   return (
     <>
       <button id="devWebAll" onClick={(e) => handleAllButtonClick(e)} className={`text-base font-light hover:underline ${selected.selectedBtn === 'devWebAll' ? 'underline' : ''}`}>
-        Todas las tecnologías
+        {dictionary.allCategories}
       </button>
       {webDevProjects &&
         Object.entries(webDevTagCount).map(([key, value], index) => {

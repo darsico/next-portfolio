@@ -20,6 +20,9 @@ export const QUERY_PROJECTS = gql`
           url(transform: { format: WEBP })
         }
         projectName
+        enProjectName: projectName(locale: "en-US")
+        enType: type(locale: "en-US")
+        enDescription: description(locale: "en-US")
         projectOverview {
           json
         }

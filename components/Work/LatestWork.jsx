@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useContext } from 'react';
+import { LanguageContext } from '../../context/LanguageContext';
 import { SiteContext } from '../../context/SiteContext';
 import { getIconsSource } from '../../src/utils/Works/getIconsSource';
 import Section from '../Section';
@@ -10,8 +11,9 @@ import { WorkArticle, WorkContent, WorkCTA, WorkDescription, WorkImage, WorkSeco
 
 const LatestWork = () => {
   const { projects } = useContext(SiteContext);
+  const { dictionary, checkLang } = useContext(LanguageContext);
 
-  const { type, technologyIconsCollection, projectName, description, projectImageCta, slug } = projects[0] || {};
+  const { enType, type, technologyIconsCollection, projectName, enProjectName, description, enDescription, projectImageCta, slug } = projects[0] || {};
   const uri = `/projects/${slug}`;
   const latestWorkImage = projectImageCta?.url;
 
@@ -33,7 +35,7 @@ const LatestWork = () => {
   return (
     <>
       <WorkSection id="work">
-        <WorkSectionTitle>Mi último trabajo</WorkSectionTitle>
+        <WorkSectionTitle>{dictionary.latestWork}</WorkSectionTitle>
         <Link href={uri} passHref>
           <WorkImageContainer>
             <figure className="relative w-full pb-[50%] md:pb-[30%]">{projects.length > 0 && <Image alt="" src={latestWorkImage} layout="fill" objectFit="cover" placeholder="blur" blurDataURL={`data:image/svg+xml;base64,${toBase64(convertImage(700, 475))}`} />}</figure>
@@ -41,10 +43,10 @@ const LatestWork = () => {
         </Link>
         <WorkArticle>
           <WorkContent>
-            <WorkSubtitle>{type}</WorkSubtitle>
+            <WorkSubtitle>{checkLang(type, enType)}</WorkSubtitle>
             <Link href={uri} passHref>
               <LatestWorkTitle>
-                {projectName}
+                {checkLang(projectName, enProjectName)}
                 <span> →</span>
               </LatestWorkTitle>
             </Link>
@@ -52,9 +54,9 @@ const LatestWork = () => {
               type === 'Desarrollo Web' || type === 'Web Development' ? <TechnologyIcons technologyIcons={technologyIconsCollection} /> : null
               // <DesignTags designTags={designTags} />
             }
-            <WorkDescription>{description}</WorkDescription>
+            <WorkDescription>{checkLang(description, enDescription)}</WorkDescription>
             <Link href={uri} passHref>
-              <WorkCTA>Ver proyecto</WorkCTA>
+              <WorkCTA>{dictionary.seeProject}</WorkCTA>
             </Link>
           </WorkContent>
           {/* <WorkSecondImage
