@@ -63,7 +63,7 @@ const Contact = () => {
   };
   return (
     <Section customClass="grid grid-cols-1 md:grid-cols-2" >
-      <figure className="flex flex-col items-center justify-center p-5 " id="contact">
+      <figure className="flex flex-col items-center justify-center p-5 " >
         <Lottie animationData={animConnect} autoplay={true} loop={true} />
       </figure>
       {isLoading ? (

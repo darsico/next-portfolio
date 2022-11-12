@@ -5,7 +5,6 @@ import lottie from "../src/lotties/404.json";
 import Layout from "../components/Layout.jsx";
 import StandardButton from "../components/Buttons/StandarButton";
 import Link from "next/link";
-import tw from "twin.macro";
 
 const PageNotFound = () => {
   const lottieRef = useRef();
