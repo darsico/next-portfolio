@@ -1,4 +1,4 @@
-import { useContext, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import Hero from '../components/Hero';
 import Layout from '../components/Layout';
 import LatestWork from '../components/Work/LatestWork';

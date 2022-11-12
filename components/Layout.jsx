@@ -1,11 +1,14 @@
+import dynamic from "next/dynamic";
 import Head from "next/head";
 import Footer from "./Footer/Footer";
-import Navbar from "./Navbar/Navbar,";
+// import Navbar from "./Navbar/Navbar,";
 
 const Layout = ({ children, title, description }) => {
   const pageTitle = title ? `${title} | Diego's Portfolio` : "Diego's Portfolio";
   const pageDescription = description || "Portafolio donde se muestra los trabajos principales de Diego Huaman";
-
+  const Navbar = dynamic(() => import("./Navbar/Navbar,.jsx"), {
+    ssr: false,
+  });
   return (
     <>
       <Head>
