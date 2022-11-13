@@ -1,11 +1,14 @@
 import { useContext } from "react";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { FaHeart } from "react-icons/fa";
-import { LanguageContext } from "../../context/LanguageContext";
+// import { LanguageContext } from "../../context/LanguageContext";
+import { useLanguageStore } from "../../store/store";
 import Section from "../Section";
 
 const Footer = () => {
-  const { dictionary } = useContext(LanguageContext)
+  const { dictionary } = useLanguageStore((state) => state)
+
+
   const { followMe, checkThis, projects, aboutMe, resume, madeWith, by, textMe } = dictionary
   return (
     <footer className="footer">

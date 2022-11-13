@@ -7,10 +7,11 @@ import { useContext } from 'react';
 import { SiteContext } from '../../context/SiteContext';
 import uId from '../../src/utils/uniqueId';
 import { LanguageContext } from '../../context/LanguageContext';
+import { useLanguageStore } from '../../store/store';
 
 const Works = () => {
   const { filteredProjects } = useContext(SiteContext);
-  const { checkLang } = useContext(LanguageContext)
+  const { checkLang } = useLanguageStore((state) => state)
 
   return (
     <WorkGridSection>

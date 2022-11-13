@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import { LanguageContext } from '../../context/LanguageContext';
 import { SiteContext } from '../../context/SiteContext';
 import { getIconsSource } from '../../src/utils/Works/getIconsSource';
+import { useLanguageStore } from '../../store/store';
 import Section from '../Section';
 import DesignTags from './DesignTags';
 import TechnologyIcons from './TechnologyIcons';
@@ -11,7 +12,8 @@ import { WorkArticle, WorkContent, WorkCTA, WorkDescription, WorkImage, WorkSeco
 
 const LatestWork = () => {
   const { projects } = useContext(SiteContext);
-  const { dictionary, checkLang } = useContext(LanguageContext);
+  // const { dictionary, checkLang } = useContext(LanguageContext);
+  const { dictionary, checkLang } = useLanguageStore((state) => state)
 
   const { enType, type, technologyIconsCollection, projectName, enProjectName, description, enDescription, projectImageCta, slug } = projects[0] || {};
   const uri = `/projects/${slug}`;
@@ -32,6 +34,7 @@ const LatestWork = () => {
   </svg>`;
 
   const toBase64 = (str) => (typeof window === 'undefined' ? Buffer.from(str).toString('base64') : window.btoa(str));
+
   return (
     <>
       <WorkSection id="work">

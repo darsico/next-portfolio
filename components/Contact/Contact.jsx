@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState, useRef, useEffect, useContext } from "react";
+import { useState, useRef } from "react";
 import { useRouter } from "next/router";
 
 import ReCAPTCHA from "react-google-recaptcha";
@@ -11,8 +11,8 @@ import animConnect from "../../src/lotties/connect-lottie.json";
 
 import Section from "../Section";
 import Spinner from "../Loaders/Spinner.jsx";
-import useShowRender from "../../hooks/useShowRender";
-import { LanguageContext } from "../../context/LanguageContext";
+
+import { useLanguageStore } from "../../store/store";
 
 const Contact = () => {
   const router = useRouter();
@@ -23,10 +23,9 @@ const Contact = () => {
   const [validCaptcha, setValidCaptcha] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const { dictionary } = useContext(LanguageContext)
+  const { dictionary } = useLanguageStore((state) => state)
   const { formText, formEmail, formMessage, formName, formSend } = dictionary
 
-  const showRender = useShowRender()
   const {
     register,
     handleSubmit,
@@ -68,8 +67,6 @@ const Contact = () => {
       setValidCaptcha(true);
     }
   };
-
-  if (!showRender) return null
 
   return (
     <Section customClass="grid grid-cols-1 md:grid-cols-2" >

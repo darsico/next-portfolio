@@ -4,15 +4,14 @@ import { dateFormatter } from '../../src/utils/dateFormatter';
 import { getIconNameAndSource } from '../../src/utils/Works/getIconNameAndSource';
 import { getIconsSource } from '../../src/utils/Works/getIconsSource';
 import Section from '../Section';
-import { useContext, useEffect } from 'react';
-import { SiteContext } from '../../context/SiteContext';
 import { cleanAndCapitalize } from '../../src/utils/cleanAndCapitalize';
-import { LanguageContext } from '../../context/LanguageContext';
+import { useLanguageStore } from '../../store/store';
 
 const ProjectInfo = ({ project }) => {
   const { designStack, date, demoLink, enProjectName, projectName, technologyIconsCollection, enType, type, repositoryLink } = project;
   const { items } = technologyIconsCollection;
-  const { dictionary, checkLang } = useContext(LanguageContext)
+  const { dictionary, checkLang } = useLanguageStore((state) => state)
+
 
   const technologiesNames = items.map((icon) => cleanAndCapitalize(icon.title));
 

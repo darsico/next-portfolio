@@ -1,16 +1,17 @@
 import Lottie from "lottie-react";
 import Section from "../Section";
 import arrowDown from "../../src/lotties/icon-arrow-down.json";
-import { useContext, useEffect, useRef } from "react";
-import { LanguageContext } from "../../context/LanguageContext";
-import useShowRender from "../../hooks/useShowRender";
+import { useEffect, useRef } from "react";
+import { useLanguageStore } from "../../store/store";
+
 
 const arrowDownStyle = {
   width: 100,
 };
 
 const Connect = () => {
-  const { dictionary } = useContext(LanguageContext)
+  const { dictionary } = useLanguageStore((state) => state)
+
   const lottieRef = useRef();
 
   useEffect(() => {

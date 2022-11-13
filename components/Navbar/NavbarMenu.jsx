@@ -1,15 +1,14 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import StandardButton from '../Buttons/StandarButton';
 import Link from 'next/link';
 import useWindowsSize from '../../hooks/useWindowsSize';
-import { LanguageContext } from '../../context/LanguageContext';
-import { languageOptions } from '../../src/utils/language';
+
+import { useLanguageStore } from '../../store/store';
+import LangSelect from './LangSelect';
 
 const NavbarMenu = ({ open, setOpen }) => {
   const [mobileScreen, setMobileScreen] = useState();
-  const { userLanguage, userLanguageChange, dictionary } = useContext(LanguageContext);
-
-  const handleLanguageChange = e => userLanguageChange(e.target.value);
+  const { dictionary } = useLanguageStore((state) => state)
 
   useEffect(() => {
     const screen = window.innerWidth < 768;
@@ -28,16 +27,8 @@ const NavbarMenu = ({ open, setOpen }) => {
   return (
     <Nav open={open} mobileScreen={mobileScreen} className="">
       <List open={open} mobileScreen={mobileScreen}>
-        <li>
-          <select
-            onChange={handleLanguageChange}
-            value={userLanguage}
-            className="cursor-pointer bg-transparent"
-          >
-            {Object.entries(languageOptions).map(([id, name]) => (
-              <option key={id} value={id}>{name}</option>
-            ))}
-          </select>
+        <li className='hidden md:block'>
+          <LangSelect />
         </li>
         <li className="self-start md:self-center">
           <a className="text-3xl md:text-base hover:opacity-70 transition-all" onClick={handleLinkClick} href={dictionary.resumeLink} target="_blank" rel="noreferrer">

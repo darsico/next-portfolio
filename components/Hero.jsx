@@ -2,6 +2,7 @@ import Lottie from "lottie-react";
 import { useContext, useEffect, useRef } from "react";
 import { LanguageContext } from "../context/LanguageContext";
 import heroScrollDown from "../src/lotties/scroll-down.json";
+import { useLanguageStore } from "../store/store";
 
 const scrollDownStyle = {
   width: 40,
@@ -12,7 +13,7 @@ const scrollDownStyle = {
 };
 
 const Hero = () => {
-  const { dictionary } = useContext(LanguageContext);
+  const { dictionary } = useLanguageStore((state) => state)
 
   const lottieRef = useRef();
 

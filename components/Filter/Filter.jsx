@@ -1,20 +1,14 @@
 import { useContext, useState } from 'react';
 
 import { SiteContext } from '../../context/SiteContext';
-
-import Section from '../Section';
 import ChildFilter from './ChildFilter';
-import useShowRender from '../../hooks/useShowRender';
-import { LanguageContext } from '../../context/LanguageContext';
+import { useLanguageStore } from '../../store/store';
 
-const Filter = ({ }) => {
+const Filter = () => {
   const [toggle, setToggle] = useState(1);
 
   const { webDevProjects, setFilteredProjects, projects, designProjects } = useContext(SiteContext);
-  const { dictionary } = useContext(LanguageContext)
-
-  const showRender = useShowRender()
-
+  const { dictionary } = useLanguageStore((state) => state)
   const toggleItem = (index) => {
     setToggle(index);
   };
@@ -33,8 +27,6 @@ const Filter = ({ }) => {
     toggleItem(1);
     setFilteredProjects(projects);
   };
-
-  if (!showRender) return <p>loading...</p>
 
   return (
     <section className="flex flex-col mx-auto w-[90%] md:max-w-5xl py-8 md:pb-0 md:pt-20 " id="projects" >

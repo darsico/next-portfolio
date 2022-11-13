@@ -8,21 +8,14 @@ import { SiteContext } from '../context/SiteContext';
 import Filter from '../components/Filter/Filter';
 import { DataContext } from '../context/DataContext';
 import dynamic from 'next/dynamic';
+import { useLanguageStore } from '../store/store';
+import Hero from '../components/Hero';
+import LatestWork from '../components/Work/LatestWork';
+import Connect from '../components/Connect/Connect';
 
 export default function Home() {
   const [siteData] = useContext(DataContext);
   const { getProjects, getDesignProjects, getWebDevProjects } = useContext(SiteContext);
-
-  const Hero = dynamic(() => import("../components/Hero"), {
-    ssr: false,
-  });
-  const LatestWork = dynamic(() => import('../components/Work/LatestWork'), {
-    ssr: false,
-  });
-
-  const Connect = dynamic(() => import('../components/Connect/Connect.jsx'), {
-    ssr: false,
-  });
 
   useEffect(() => {
     getProjects(siteData);
