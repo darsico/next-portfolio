@@ -22,7 +22,7 @@ const Navbar = () => {
         </Link>
         <NavbarMenu open={open} setOpen={setOpen} />
         <div className="flex items-center">
-          <div className="md:hidden text-lg">
+          <div className="md:hidden text-lg mr-1 border-[1px] px-2 border-gray-500 border-opacity-50 rounded-2xl  active:bg-slate-400 active:bg-opacity-5">
             <LangSelect />
           </div>
           <MenuToggleButton setOpen={setOpen} open={open} />
