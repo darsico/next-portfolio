@@ -7,14 +7,14 @@ const dummyStorageApi = {
  setItem: () => undefined,
 };
 export const useLanguageStore = create(persist((set, get) => ({
- userLanguage: 'es',
- dictionary: dictionaryList.es,
+ userLanguage: 'en',
+ dictionary: dictionaryList.en,
  cleanDictionary: () => set({ dictionary: {} }),
  userLanguageChange: (selected) =>
   set(() => {
    get().cleanDictionary()
-   const newLanguage = languageOptions[selected] ? selected : 'es';
-   const dictionaryLang = dictionaryList[newLanguage || dictionaryList.es]
+   const newLanguage = languageOptions[selected] ? selected : 'en';
+   const dictionaryLang = dictionaryList[newLanguage || dictionaryList.en]
    return { userLanguage: newLanguage, dictionary: dictionaryLang };
   }),
  checkLang: (spa, eng) => (get().userLanguage === 'es') ? spa : eng

@@ -7,8 +7,6 @@ import { SiteContext } from '../context/SiteContext';
 
 import Filter from '../components/Filter/Filter';
 import { DataContext } from '../context/DataContext';
-import dynamic from 'next/dynamic';
-import { useLanguageStore } from '../store/store';
 import Hero from '../components/Hero';
 import LatestWork from '../components/Work/LatestWork';
 import Connect from '../components/Connect/Connect';
