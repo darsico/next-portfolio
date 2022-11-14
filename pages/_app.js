@@ -13,7 +13,7 @@ function App({ Component, pageProps, data }) {
   const { userLanguage } = useLanguageStore((state) => state)
 
   useEffect(() => {
-    document.documentElement.lang = userLanguage || "es";
+    document.documentElement.lang = userLanguage || "en";
   }, [userLanguage]);
 
   return (
