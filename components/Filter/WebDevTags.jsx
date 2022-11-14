@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
-import { LanguageContext } from '../../context/LanguageContext';
 import { SiteContext } from '../../context/SiteContext';
 import { countArrayItems } from '../../src/utils/countArrayItems';
+import { useLanguageStore } from '../../store/store';
 
 const WebDevTags = () => {
   const [selected, setSelected] = useState({
@@ -9,7 +9,7 @@ const WebDevTags = () => {
   });
 
   const { webDevProjects, setFilteredProjects } = useContext(SiteContext);
-  const { dictionary } = useContext(LanguageContext)
+  const { dictionary } = useLanguageStore(state => state)
 
   const webDevTags = webDevProjects && webDevProjects.map((project) => project.tags);
 

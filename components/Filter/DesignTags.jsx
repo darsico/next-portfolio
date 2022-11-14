@@ -1,14 +1,14 @@
 import { useContext, useState } from 'react';
-import { LanguageContext } from '../../context/LanguageContext';
 
 import { SiteContext } from '../../context/SiteContext';
+import { useLanguageStore } from '../../store/store';
 
 const DesignTags = () => {
   const [selected, setSelected] = useState({
     selectedBtn: 'designAll',
   });
   const { designProjects, setFilteredProjects } = useContext(SiteContext);
-  const { dictionary } = useContext(LanguageContext)
+  const { dictionary } = useLanguageStore(state => state)
 
   const designTags = designProjects && designProjects.map((project) => project.designStack);
 

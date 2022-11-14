@@ -1,10 +1,9 @@
-import { useContext } from 'react';
-import { LanguageContext } from '../../context/LanguageContext';
+import { useLanguageStore } from '../../store/store';
 import DesignTags from './DesignTags';
 import WebDevTags from './WebDevTags';
 
 const ChildFilter = ({ toggle }) => {
-  const { dictionary } = useContext(LanguageContext)
+  const { dictionary } = useLanguageStore(state => state)
 
   return (
     <div className="flex gap-2 mt-3  flex-wrap">

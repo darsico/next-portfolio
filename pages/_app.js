@@ -1,14 +1,21 @@
 import '../styles/globals.css';
 import { SiteProvider } from '../context/SiteContext';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import getDataQuery from '../lib/request';
 import Head from 'next/head';
 import { QUERY_PROJECTS } from '../src/queries/queryProjects';
 import { DataContext } from '../context/DataContext';
 import { LanguageProvider } from '../context/LanguageContext';
+import { useLanguageStore } from '../store/store';
 
 function App({ Component, pageProps, data }) {
   const [siteData, setSiteData] = useState(data);
+  const { userLanguage } = useLanguageStore((state) => state)
+
+  useEffect(() => {
+    document.documentElement.lang = userLanguage || "es";
+  }, [userLanguage]);
+
   return (
     <>
       <Head>
