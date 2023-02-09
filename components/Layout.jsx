@@ -25,11 +25,11 @@ const Layout = ({ children, title, description }) => {
         <meta property="twitter:image" content="https://darsico.github.io/portafolio_dh/images/fondo-card.jpg" />
       </Head>
       <Navbar />
-      <main className="pt-28 min-h-[80vh]">{children}</main>
+      <main className="pt-28 min-h-[85vh]">{children}</main>
       <Footer />
     </>
   );
-};
+}
 
 
 export default Layout;
