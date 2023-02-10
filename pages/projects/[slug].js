@@ -46,25 +46,25 @@ const ProjectPage = ({ project }) => {
   const ProjectInfo = dynamic(() => import('../../components/Project/ProjectInfo.jsx'), {
     ssr: false,
   });
-  const {json, links} = content || {};
+  const { json, links } = content || {};
 
-  const assetsOfBlocks = links.assets.block;
-  const contentData = json.content;
+  const assetsOfBlocks = links?.assets.block || [];
+  const contentData = json?.content || [];
 
-   const contentDataWithAssets = contentData.map((block) => {
-      if (block.nodeType === "embedded-asset-block") {
-        const imageBlockId = block.data.target.sys.id;
-        const asset = assetsOfBlocks.find((asset) => asset.sys.id === imageBlockId);
-        const { description, url } = asset || {};
+  const contentDataWithAssets = contentData.map((block) => {
+    if (block.nodeType === 'embedded-asset-block') {
+      const imageBlockId = block.data.target.sys.id;
+      const asset = assetsOfBlocks.find((asset) => asset.sys.id === imageBlockId);
+      const { description, url } = asset || {};
 
-        return {
-          ...block,
-          url,
-          description
-        };
-      }
-      return block;
-    });
+      return {
+        ...block,
+        url,
+        description,
+      };
+    }
+    return block;
+  });
 
   return (
     <Layout title={title} description={description}>

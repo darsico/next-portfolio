@@ -4,7 +4,8 @@ import ListBlock from './Blocks/ListBlock';
 import ParagraphBlock from './Blocks/ParagraphBlock';
 
 const Block = ({ block }) => {
-  const { content, nodeType } = block;
+  if (!block) return null;
+  const { content, nodeType } = block  || {};
 
   switch (nodeType) {
     case 'heading-1' || 'heading-2' || 'heading-3' || 'heading-4' || 'heading-5' || 'heading-6':
