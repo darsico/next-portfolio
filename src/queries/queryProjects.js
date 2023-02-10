@@ -26,11 +26,17 @@ export const QUERY_PROJECTS = gql`
         projectOverview {
           json
         }
+        sys {
+        id
+        }
         date
         description
         demoLink
         repositoryLink
         designStack
+        content {
+          json
+        }
         projectImageGalleryCollection(limit: 5) {
           items {
             url(transform: { format: WEBP })

@@ -1,23 +1,25 @@
-import HeadingBlock from "./Blocks/HeadingBlock";
-import ImageBlock from "./Blocks/ImageBlock";
-import ListBlock from "./Blocks/ListBlock";
-import ParagraphBlock from "./Blocks/ParagraphBlock";
+import HeadingBlock from './Blocks/HeadingBlock';
+import ImageBlock from './Blocks/ImageBlock';
+import ListBlock from './Blocks/ListBlock';
+import ParagraphBlock from './Blocks/ParagraphBlock';
 
 const Block = ({ block }) => {
-  const { name, attributes, originalContent } = block;
-  switch (name) {
-    case "core/heading":
-      return <HeadingBlock {...attributes} />;
+  const { content, nodeType } = block;
 
-    case "core/paragraph":
-      return <ParagraphBlock {...attributes} />;
+  switch (nodeType) {
+    case 'heading-1' || 'heading-2' || 'heading-3' || 'heading-4' || 'heading-5' || 'heading-6':
+      return <HeadingBlock content={content} type={nodeType} />;
 
-    case "core/image":
-      return <ImageBlock {...attributes} />;
+    case 'paragraph':
+      return <ParagraphBlock content={content} />;
 
-    case "core/list":
-      return <ListBlock {...attributes} />;
+    case 'embedded-asset-block':
+      return <ImageBlock block={block} />;
 
+    case "ordered-list":
+      return <ListBlock content={content} />;
+    case "hr": 
+      return <hr className="my-4 border-t-2 border-gray-300" />;
     default:
       return null;
   }
