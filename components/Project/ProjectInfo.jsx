@@ -70,7 +70,6 @@ const ProjectInfo = ({ project }) => {
             {demoLink && demoLink.replace('https://', '')}
           </a>
         </li>
-        <p></p>
       </ul>
     </InfoSection>
   );
