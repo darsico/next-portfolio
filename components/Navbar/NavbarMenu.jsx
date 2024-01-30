@@ -36,17 +36,17 @@ const NavbarMenu = ({ open, setOpen }) => {
           </a>
         </li>
         <li className="self-start md:self-center ">
-          <Link href="/#projects">
-            <a className="text-3xl md:text-base hover:opacity-70 transition-all " onClick={handleLinkClick}>
+          <Link href="/#projects" passHref>
+            <p className="text-3xl md:text-base hover:opacity-70 transition-all " onClick={handleLinkClick}>
               {dictionary.projects}
-            </a>
+            </p>
           </Link>
         </li>
         <li className="self-start pt-5 md:pt-0 md:self-center">
           <Link href={'/#form'} passHref>
-            <a onClick={handleLinkClick} className="transition-all">
+            <p onClick={handleLinkClick} className="transition-all">
               <StandardButton text={dictionary.sayHello} />
-            </a>
+            </p>
           </Link>
         </li>
       </List>
