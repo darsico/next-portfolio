@@ -20,7 +20,7 @@ const Works = () => {
           const projectImage = projectImageCta.url;
 
           return (
-            <Link href={`/projects/${slug}`} key={uId()} passHref>
+            <Link href={`/projects/${slug}`} key={uId()} passHref legacyBehavior>
               <article className="">
                 <figure style={{ position: 'relative', width: '100%', paddingBottom: '60%' }}>
                   <Image alt="" src={projectImage} layout="fill" objectFit="cover" priority />

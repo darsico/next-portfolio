@@ -13,7 +13,7 @@ const Navbar = () => {
   return (
     <Header>
       <Nav>
-        <Link href="/" passHref className="z-50">
+        <Link href="/" passHref className="z-50" legacyBehavior>
           <Logo>
             Diego Huaman <LogoThin>| {dictionary.title} </LogoThin>
           </Logo>

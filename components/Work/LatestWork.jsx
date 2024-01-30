@@ -39,15 +39,15 @@ const LatestWork = () => {
     <>
       <WorkSection id="work">
         <WorkSectionTitle>{dictionary.latestWork}</WorkSectionTitle>
-        <Link href={uri} passHref>
-          <p className="w-full cursor-pointer">
+        <Link href={uri} passHref legacyBehavior>
+          <div className="w-full cursor-pointer">
             <figure className="relative w-full pb-[50%] md:pb-[30%]">{projects.length > 0 && <Image alt="" src={latestWorkImage} layout="fill" objectFit="cover" placeholder="blur" blurDataURL={`data:image/svg+xml;base64,${toBase64(convertImage(700, 475))}`} />}</figure>
-          </p>
+          </div>
         </Link>
         <WorkArticle>
           <WorkContent>
             <WorkSubtitle>{checkLang(type, enType)}</WorkSubtitle>
-            <Link href={uri} passHref>
+            <Link href={uri} passHref legacyBehavior>
               <p className=" text-3xl font-medium md:text-5xl tracking-[-0.05em] cursor-pointer mb-2 md:mb-4 w-[80%] md:pb-4">
                 {checkLang(projectName, enProjectName)}
                 <span> →</span>
@@ -57,17 +57,17 @@ const LatestWork = () => {
               type === 'Desarrollo Web' || type === 'Web Development' ? <TechnologyIcons technologyIcons={technologyIconsCollection} /> : null
               // <DesignTags designTags={designTags} />
             }
-            <Link href={uri} passHref>
+            <Link href={uri} passHref legacyBehavior>
               <WorkDescription>{checkLang(description, enDescription)}</WorkDescription>
             </Link>
-            <Link href={uri} passHref>
-              <a className="underline hover:font-medium">{dictionary.seeProject}</a>
+            <Link href={uri} passHref className="underline hover:font-medium">
+              {dictionary.seeProject}
             </Link>
           </WorkContent>
           {/* <WorkSecondImage
-          src="https://raw.githubusercontent.com/darsico/portafolio-dh/3034cfd5814a082e1066c6dfcfe949d962cfcec2/images/website-card.png"
-          alt=""
-        /> */}
+        src="https://raw.githubusercontent.com/darsico/portafolio-dh/3034cfd5814a082e1066c6dfcfe949d962cfcec2/images/website-card.png"
+        alt=""
+      /> */}
         </WorkArticle>
       </WorkSection>
     </>

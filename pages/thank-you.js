@@ -19,7 +19,7 @@ const ThankYouPage = () => {
         <div className="flex flex-col items-center justify-center h-full gap-4 p-5">
           <h1 className="text-5xl font-semibold tracking-tighter text-center md:text-6xl ">Gracias por tu mensaje!</h1>
           <p className="mb-4 text-lg leading-5 tracking-tighter text-center text-gray-500 ">Me comunicaré contigo lo más antes posible. :)</p>
-          <Link href="/" passHref>
+          <Link href="/" passHref legacyBehavior>
             <p className="w-fit py-1 px-4 rounded-full border border-gray-900 bg-black text-[#ececec] hover:bg-opacity-80 hover:shadow-xl transition-colors">Regresar a Home</p>
           </Link>
         </div>
